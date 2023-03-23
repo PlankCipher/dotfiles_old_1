@@ -210,6 +210,41 @@ EOF
   cp -r $SCRIPT_DIR/.config/mpd $SCRIPT_DIR/.config/ncmpcpp $HOME/.config/
 }
 
+install_zsh_and_ohmyzsh () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###         INSTALLING ZSH AND OHMYZSH          ###
+###                                             ###
+###################################################
+
+EOF
+
+  yay -S zsh
+
+  # Change default shell to ZSH
+  chsh -s /usr/bin/zsh
+
+  cp -r $SCRIPT_DIR/.config/zsh $HOME/.config/
+  cp $SCRIPT_DIR/zsh/.zprofile $HOME/
+
+  # Install oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+
+  cp $SCRIPT_DIR/zsh/steeef.zsh-theme $HOME/.oh-my-zsh/themes/steeef.zsh-theme
+
+  # Install zsh-autosuggestions plugin
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+  # Install zsh-syntax-highlighting plugin
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+  # Install colorscripts
+  yay -S shell-color-scripts
+  xargs -a $SCRIPT_DIR/zsh/blacklisted_colorscripts.txt -I {} sh -c 'colorscript --blacklist {}'
+}
+
 install_build_utils
 install_yay
 install_nodejs
@@ -219,6 +254,7 @@ install_et
 install_kabmat
 install_ranger
 install_mpd
+install_zsh_and_ohmyzsh
 copy_files_and_create_dirs
 
 cat << EOF
