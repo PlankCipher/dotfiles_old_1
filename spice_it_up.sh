@@ -69,12 +69,42 @@ EOF
 
   sudo pacman -S man-pages
 
+  yay -S python python-pip
+
   # docker
   sudo pacman -S docker
   sudo systemctl enable docker
 
   # insomnia
   yay -S insomnia-bin
+}
+
+install_neovim () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###              INSTALLING NEOVIM              ###
+###                                             ###
+###################################################
+
+EOF
+
+  yay -S fzf ripgrep the_silver_searcher fd
+  sudo pacman -S aspell aspell-en
+
+  yarn global add vscode-langservers-extracted typescript typescript-language-server emmet-ls prettier @fsouza/prettierd pyright
+  pip install yapf
+
+  # Install Hack Nerd Font
+  mkdir -p $HOME/Downloads/Compressed/
+  curl -Lo $HOME/Downloads/Compressed/hack_nerd_font.zip 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip'
+  sudo unzip $HOME/Downloads/Compressed/hack_nerd_font.zip -d /usr/share/fonts/TTF/
+  rm -rf $HOME/Downloads/Compressed
+
+  sudo pacman -S neovim
+
+  cp -r $SCRIPT_DIR/.config/nvim $HOME/.config/
 }
 
 copy_files_and_create_dirs () {
@@ -95,6 +125,7 @@ install_build_utils
 install_yay
 install_nodejs
 install_misc_dev_stuff
+install_neovim
 copy_files_and_create_dirs
 
 cat << EOF
