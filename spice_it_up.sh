@@ -251,6 +251,11 @@ EOF
   touch $HOME/.local/share/zsh/history
 }
 
+install_kitty () {
+  sudo pacman -S kitty
+  cp -r $SCRIPT_DIR/.config/kitty $HOME/.config/
+}
+
 copy_files_and_create_dirs
 install_build_utils
 install_yay
@@ -262,6 +267,7 @@ install_kabmat
 install_ranger
 install_mpd
 install_zsh_and_ohmyzsh
+install_kitty
 
 cat << EOF
 __        __   _                               _                          _
