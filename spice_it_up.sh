@@ -121,11 +121,33 @@ EOF
   mkdir -p $HOME/chamber_of_magic/junk/ $HOME/chamber_of_magic/test/
 }
 
+install_et () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###                INSTALLING ET                ###
+###                                             ###
+###################################################
+
+EOF
+
+  sudo pacman -S tre sox
+
+  mkdir -p $HOME/Downloads
+  git clone https://github.com/PlankCipher/et.git $HOME/Downloads/et
+  cd $HOME/Downloads/et
+  ./install.sh
+  cd $SCRIPT_DIR
+  rm -rf $HOME/Downloads/et
+}
+
 install_build_utils
 install_yay
 install_nodejs
 install_misc_dev_stuff
 install_neovim
+install_et
 copy_files_and_create_dirs
 
 cat << EOF
