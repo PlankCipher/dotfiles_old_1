@@ -170,12 +170,32 @@ EOF
   cp -r $SCRIPT_DIR/.config/ranger $HOME/.config/
 }
 
+install_kabmat () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###              INSTALLING KABMAT              ###
+###                                             ###
+###################################################
+
+EOF
+
+  git clone https://github.com/PlankCipher/kabmat.git $HOME/Downloads/kabmat
+  cd $HOME/Downloads/kabmat
+  make
+  sudo make install
+  cd $SCRIPT_DIR
+  rm -rf $HOME/Downloads/kabmat
+}
+
 install_build_utils
 install_yay
 install_nodejs
 install_misc_dev_stuff
 install_neovim
 install_et
+install_kabmat
 install_ranger
 copy_files_and_create_dirs
 
