@@ -189,6 +189,27 @@ EOF
   rm -rf $HOME/Downloads/kabmat
 }
 
+install_mpd () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###              INSTALLING MPD                 ###
+###                                             ###
+###################################################
+
+EOF
+
+  yay -S mpd mpc ncmpcpp
+
+  # Add mpd to required groups
+  sudo gpasswd -a mpd $(whoami)
+  chmod 710 $HOME/
+  sudo gpasswd -a mpd audio
+
+  cp -r $SCRIPT_DIR/.config/mpd $SCRIPT_DIR/.config/ncmpcpp $HOME/.config/
+}
+
 install_build_utils
 install_yay
 install_nodejs
@@ -197,6 +218,7 @@ install_neovim
 install_et
 install_kabmat
 install_ranger
+install_mpd
 copy_files_and_create_dirs
 
 cat << EOF
