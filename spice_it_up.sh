@@ -97,28 +97,13 @@ EOF
   pip install yapf
 
   # Install Hack Nerd Font
-  mkdir -p $HOME/Downloads/Compressed/
   curl -Lo $HOME/Downloads/Compressed/hack_nerd_font.zip 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip'
   sudo unzip $HOME/Downloads/Compressed/hack_nerd_font.zip -d /usr/share/fonts/TTF/
-  rm -rf $HOME/Downloads/Compressed
+  rm -rf $HOME/Downloads/Compressed/*
 
   sudo pacman -S neovim
 
   cp -r $SCRIPT_DIR/.config/nvim $HOME/.config/
-}
-
-copy_files_and_create_dirs () {
-  cat <<EOF
-
-###################################################
-###                                             ###
-###       COPYING FILES AND CREATING DIRS       ###
-###                                             ###
-###################################################
-
-EOF
-
-  mkdir -p $HOME/chamber_of_magic/junk/ $HOME/chamber_of_magic/test/
 }
 
 install_et () {
@@ -134,7 +119,6 @@ EOF
 
   sudo pacman -S tre sox
 
-  mkdir -p $HOME/Downloads
   git clone https://github.com/PlankCipher/et.git $HOME/Downloads/et
   cd $HOME/Downloads/et
   ./install.sh
@@ -245,6 +229,29 @@ EOF
   xargs -a $SCRIPT_DIR/zsh/blacklisted_colorscripts.txt -I {} sh -c 'colorscript --blacklist {}'
 }
 
+copy_files_and_create_dirs () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###       COPYING FILES AND CREATING DIRS       ###
+###                                             ###
+###################################################
+
+EOF
+
+  mkdir -p $HOME/chamber_of_magic/{junk,test}
+
+  mkdir -p $HOME/Downloads/{Music,Documents,Compressed}
+
+  export GNUPGHOME="$HOME/.local/share/gnupg"
+  mkdir -p $GNUPGHOME
+
+  mkdir -p $HOME/.local/share/zsh
+  touch $HOME/.local/share/zsh/history
+}
+
+copy_files_and_create_dirs
 install_build_utils
 install_yay
 install_nodejs
@@ -255,7 +262,6 @@ install_kabmat
 install_ranger
 install_mpd
 install_zsh_and_ohmyzsh
-copy_files_and_create_dirs
 
 cat << EOF
 __        __   _                               _                          _
