@@ -142,12 +142,41 @@ EOF
   rm -rf $HOME/Downloads/et
 }
 
+install_ranger () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###              INSTALLING RANGER              ###
+###                                             ###
+###################################################
+
+EOF
+
+  yay -S ranger
+
+  # Install dragon
+  git clone https://github.com/mwh/dragon.git $HOME/Downloads/dragon
+  cd $HOME/Downloads/dragon/
+  sudo make install
+  sudo chmod +x dragon
+  sudo mv dragon /sbin/dragon
+  cd $SCRIPT_DIR
+  rm -rf $HOME/Downloads/dragon
+
+  # Install ranger_devicons plugin
+  git clone https://github.com/alexanderjeurissen/ranger_devicons $HOME/.config/ranger/plugins/ranger_devicons
+
+  cp -r $SCRIPT_DIR/.config/ranger $HOME/.config/
+}
+
 install_build_utils
 install_yay
 install_nodejs
 install_misc_dev_stuff
 install_neovim
 install_et
+install_ranger
 copy_files_and_create_dirs
 
 cat << EOF
