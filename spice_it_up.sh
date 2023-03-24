@@ -249,6 +249,8 @@ EOF
 
   mkdir -p $HOME/.local/share/zsh
   touch $HOME/.local/share/zsh/history
+
+  cp -r $SCRIPT_DIR/.config/fontconfig $HOME/.config/
 }
 
 install_kitty () {
