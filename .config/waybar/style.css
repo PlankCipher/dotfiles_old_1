@@ -1,0 +1,146 @@
+* {
+  font-family: Hack, 'Font Awesome 6 Free';
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 0;
+}
+
+window#waybar {
+  background: transparent;
+}
+
+#workspaces {
+  background: #1d2021;
+  border-radius: 5px;
+}
+
+#workspaces button {
+  padding: 2px 10px;
+  transition: 0;
+}
+
+#workspaces button.active {
+  background: #928374;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background: #928374;
+  border-color: #928374;
+}
+
+#custom-screenlock-timeout {
+  background: #98971a;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#custom-screenlock-timeout.off {
+  background: #777777;
+}
+
+#language {
+  background: #98971a;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#mpd {
+  background: #98971a;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#mpd.disconnected,
+#mpd.paused {
+  background: #777777;
+}
+
+#pulseaudio {
+  background: #98971a;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#pulseaudio.muted {
+  background: #777777;
+}
+
+#disk {
+  background: #98971a;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#tray {
+  background: #98971a;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#clock {
+  background: #689d6a;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#cpu {
+  background: #458588;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#memory {
+  background: #458588;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#custom-fans {
+  background: #458588;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#custom-temperature {
+  background: #458588;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#network {
+  background: #458588;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#custom-net-usage {
+  background: #458588;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#battery {
+  background: #458588;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+
+#battery.charging.high,
+#battery.discharging.low,
+#battery.full {
+  animation-name: blink;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  to {
+    background-color: #cc241d;
+    padding: 8px 30px;
+  }
+}

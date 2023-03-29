@@ -1,0 +1,131 @@
+{
+  "layer": "top",
+  "spacing": 10,
+  "margin": "15 15 0 15",
+
+  "modules-left": ["wlr/workspaces", "custom/screenlock-timeout", "hyprland/language", "mpd", "pulseaudio", "disk", "tray"],
+  "modules-center": ["clock"],
+  "modules-right": ["cpu", "memory", "custom/fans", "custom/temperature", "network", "custom/net-usage", "battery"],
+
+  "wlr/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
+    },
+    "sort-by-number": true,
+    "on-click": "activate",
+  },
+
+  "clock": {
+    "format": " {:%H:%M}",
+    "format-alt": " {:%a %d-%m-%Y}",
+    "tooltip": false,
+  },
+
+  "mpd": {
+    "format": " {title}",
+    "tooltip": false,
+    "max-length": 15,
+    "on-click": "mpc toggle",
+  },
+
+  "hyprland/language": {
+    "format": " {}",
+    "keyboard-name": "sino-wealth-gaming-kb-",
+    "format-en": "en",
+    "format-ar": "ara",
+  },
+
+  "custom/screenlock-timeout": {
+    "return-type": "json",
+    "exec": "$HOME/.scripts/toggle_lockscreen_timeout.sh",
+    "interval": 300,
+    "tooltip": false,
+    "signal": 9,
+    "on-click": "$HOME/.scripts/toggle_lockscreen_timeout.sh toggle",
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}% {format_source}",
+    "format-icons": ["", "", ""],
+    "format-muted": " muted {format_source}",
+    "format-source": " On",
+    "format-source-muted": " Off",
+    "tooltip": false,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+
+  },
+
+  "disk": {
+    "interval": 300,
+    "format": " {free}",
+    "tooltip": false,
+  },
+
+  "cpu": {
+    "interval": 3,
+    "format": " {usage}%",
+    "tooltip": false,
+  },
+
+  "memory": {
+    "interval": 3,
+    "format": " {percentage}%",
+    "tooltip": false,
+  },
+
+  "custom/fans": {
+    "exec": "$HOME/.scripts/fans.sh",
+    "interval": 3,
+    "tooltip": false,
+  },
+
+  "custom/temperature": {
+    "exec": "$HOME/.scripts/temps.sh",
+    "interval": 3,
+    "tooltip": false,
+  },
+
+  "network": {
+    "interval": 1,
+    "format-ethernet": " ",
+    "format-wifi": "   {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "format-disconnected": "",
+    "tooltip": false,
+  },
+
+  "custom/net-usage": {
+    "exec": "$HOME/.scripts/net_usage.sh",
+    "interval": 10,
+    "tooltip": false,
+  },
+
+  "battery": {
+    "bat": "BAT0",
+    "interval": 120,
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "format-charging": " {capacity}%",
+    "states": {
+      "high": 100,
+      "normal": 97,
+      "low": 15,
+    },
+    "tooltip": false,
+  },
+
+  "tray": {
+    "icon-size": 17,
+    "show-passive-items": true,
+    "spacing": 10,
+  },
+}

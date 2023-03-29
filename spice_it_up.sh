@@ -45,7 +45,6 @@ install_nodejs () {
 
 EOF
 
-  # NodeJS and YARN
   sudo pacman -S nodejs
 
   sudo corepack enable
@@ -71,11 +70,9 @@ EOF
 
   yay -S python python-pip
 
-  # docker
   sudo pacman -S docker
   sudo systemctl enable docker
 
-  # insomnia
   yay -S insomnia-bin
 }
 
@@ -148,10 +145,10 @@ EOF
   cd $SCRIPT_DIR
   rm -rf $HOME/Downloads/dragon
 
+  cp -r $SCRIPT_DIR/.config/ranger $HOME/.config/
+
   # Install ranger_devicons plugin
   git clone https://github.com/alexanderjeurissen/ranger_devicons $HOME/.config/ranger/plugins/ranger_devicons
-
-  cp -r $SCRIPT_DIR/.config/ranger $HOME/.config/
 }
 
 install_kabmat () {
@@ -178,7 +175,7 @@ install_mpd () {
 
 ###################################################
 ###                                             ###
-###              INSTALLING MPD                 ###
+###                INSTALLING MPD               ###
 ###                                             ###
 ###################################################
 
@@ -250,12 +247,94 @@ EOF
   mkdir -p $HOME/.local/share/zsh
   touch $HOME/.local/share/zsh/history
 
-  cp -r $SCRIPT_DIR/.config/fontconfig $HOME/.config/
+  cp -r $SCRIPT_DIR/.config/fontconfig $SCRIPT_DIR/.config/git $SCRIPT_DIR/.config/gtk-2.0 $SCRIPT_DIR/.config/gtk-3.0 $HOME/.config/
+  cp -r $SCRIPT_DIR/.scripts $HOME/
 }
 
 install_kitty () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###               INSTALLING KITTY              ###
+###                                             ###
+###################################################
+
+EOF
+
   sudo pacman -S kitty
   cp -r $SCRIPT_DIR/.config/kitty $HOME/.config/
+}
+
+install_rofi () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###               INSTALLING ROFI               ###
+###                                             ###
+###################################################
+
+EOF
+
+  yay -S rofi-lbonn-wayland-git
+  cp -r $SCRIPT_DIR/.config/rofi $HOME/.config/
+}
+
+install_waybar () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###              INSTALLING WAYBAR              ###
+###                                             ###
+###################################################
+
+EOF
+
+  yay -S waybar-hyprland-git otf-font-awesome ttf-unifont noto-fonts-emoji sysstat libqalculate bc ttf-hack
+  cp -r $SCRIPT_DIR/.config/waybar $HOME/.config/
+
+  sudo pacman -S vnstat
+  sudo systemctl enable vnstat
+}
+
+install_hyprland () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###             INSTALLING HYPRLAND             ###
+###                                             ###
+###################################################
+
+EOF
+
+  sudo pacman -S pipewire pipewire-pulse wireplumber grim slurp
+  systemctl --user enable pipewire pipewire-pulse wireplumber
+
+  yay -S hyprland xdg-desktop-portal-hyprland-git swaylock-effects swaybg wl-clipboard brightnessctl lxsession xf86-video-amdgpu dunst libnotify qt5-wayland qt6-wayland gnome-themes-extra bibata-cursor-theme swayidle wlrctl-git
+
+  cp -r $SCRIPT_DIR/.config/hypr $SCRIPT_DIR/.config/wallpapers $SCRIPT_DIR/.config/dunst $SCRIPT_DIR/.config/electron-flags.conf $HOME/.config/
+
+  sudo pacman -S go xdg-utils
+  go install go.senan.xyz/cliphist@latest
+}
+
+install_other_programs () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###          INSTALLING OTHER PROGRAMS          ###
+###                                             ###
+###################################################
+
+EOF
+
+  yay -S pavucontrol mpv zathura zathura-pdf-mupdf brave-bin zip unzip bat freetube-bin imagemagick dell-g5se-fanctl iw swayimg
+  sudo pacman -S thunderbird
+  cp -r $SCRIPT_DIR/.config/zathura $HOME/.config/
 }
 
 copy_files_and_create_dirs
@@ -270,6 +349,10 @@ install_ranger
 install_mpd
 install_zsh_and_ohmyzsh
 install_kitty
+install_hyprland
+install_rofi
+install_waybar
+install_other_programs
 
 cat << EOF
 __        __   _                               _                          _
@@ -278,4 +361,5 @@ __        __   _                               _                          _
   \ V  V /  __/ | (_| (_) | | | | | |  __/    | | | | (_) | | | | | |  __/_|
    \_/\_/ \___|_|\___\___/|_| |_| |_|\___|    |_| |_|\___/|_| |_| |_|\___(_)
 EOF
+
 exit 0
