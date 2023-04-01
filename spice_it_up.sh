@@ -247,6 +247,8 @@ EOF
   mkdir -p $HOME/.local/share/zsh
   touch $HOME/.local/share/zsh/history
 
+  mkdir -p $HOME/.config/
+
   cp -r $SCRIPT_DIR/.config/fontconfig $SCRIPT_DIR/.config/git $SCRIPT_DIR/.config/gtk-2.0 $SCRIPT_DIR/.config/gtk-3.0 $HOME/.config/
   cp -r $SCRIPT_DIR/.scripts $HOME/
 }
