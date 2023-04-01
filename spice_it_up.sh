@@ -319,6 +319,10 @@ EOF
 
   cp -r $SCRIPT_DIR/.config/hypr $SCRIPT_DIR/.config/wallpapers $SCRIPT_DIR/.config/dunst $SCRIPT_DIR/.config/electron-flags.conf $HOME/.config/
 
+  mkdir -p $HOME/.local/share/icons/default
+  cp $SCRIPT_DIR/index.theme $HOME/.local/share/icons/default/
+  sudo cp $SCRIPT_DIR/index.theme /usr/share/icons/default/
+
   sudo pacman -S go xdg-utils
   go install go.senan.xyz/cliphist@latest
 }
