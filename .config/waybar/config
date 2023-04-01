@@ -5,7 +5,7 @@
 
   "modules-left": ["wlr/workspaces", "custom/screenlock-timeout", "hyprland/language", "mpd", "pulseaudio", "disk", "tray"],
   "modules-center": ["clock"],
-  "modules-right": ["cpu", "memory", "custom/fans", "custom/temperature", "network", "custom/net-usage", "battery"],
+  "modules-right": ["cpu", "memory", "custom/fans", "custom/temperature", "custom/network", "custom/net-usage", "battery"],
 
   "wlr/workspaces": {
     "format": "{icon}",
@@ -95,11 +95,9 @@
     "tooltip": false,
   },
 
-  "network": {
+  "custom/network": {
+    "exec": "$HOME/.scripts/net_speed.sh",
     "interval": 1,
-    "format-ethernet": " ",
-    "format-wifi": "   {bandwidthDownBytes}  {bandwidthUpBytes}",
-    "format-disconnected": "",
     "tooltip": false,
   },
 
