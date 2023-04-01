@@ -66,7 +66,7 @@ install_misc_dev_stuff () {
 
 EOF
 
-  sudo pacman -S man-pages
+  sudo pacman -S man-pages man-db
 
   yay -S python python-pip
 
