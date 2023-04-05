@@ -31,101 +31,52 @@ window#waybar {
   border-color: #928374;
 }
 
-#custom-screenlock-timeout {
-  background: #98971a;
-  padding: 8px 10px;
+#custom-screenlock-timeout,
+#language,
+#mpd,
+#pulseaudio,
+#disk,
+#tray,
+#clock,
+#cpu,
+#memory,
+#custom-fans,
+#custom-temperature,
+#custom-network,
+#custom-net-usage,
+#battery {
   border-radius: 5px;
-}
-
-#custom-screenlock-timeout.off {
-  background: #777777;
-}
-
-#language {
-  background: #98971a;
   padding: 8px 10px;
-  border-radius: 5px;
 }
 
-#mpd {
+#custom-screenlock-timeout,
+#language,
+#mpd,
+#pulseaudio,
+#disk,
+#tray {
   background: #98971a;
-  padding: 8px 10px;
-  border-radius: 5px;
 }
 
+#custom-screenlock-timeout.off,
 #mpd.disconnected,
-#mpd.paused {
-  background: #777777;
-}
-
-#pulseaudio {
-  background: #98971a;
-  padding: 8px 10px;
-  border-radius: 5px;
-}
-
+#mpd.paused,
 #pulseaudio.muted {
   background: #777777;
 }
 
-#disk {
-  background: #98971a;
-  padding: 8px 10px;
-  border-radius: 5px;
-}
-
-#tray {
-  background: #98971a;
-  padding: 8px 10px;
-  border-radius: 5px;
-}
-
 #clock {
   background: #689d6a;
-  padding: 8px 10px;
-  border-radius: 5px;
 }
 
-#cpu {
-  background: #458588;
-  padding: 8px 10px;
-  border-radius: 5px;
-}
-
-#memory {
-  background: #458588;
-  padding: 8px 10px;
-  border-radius: 5px;
-}
-
-#custom-fans {
-  background: #458588;
-  padding: 8px 10px;
-  border-radius: 5px;
-}
-
-#custom-temperature {
-  background: #458588;
-  padding: 8px 10px;
-  border-radius: 5px;
-}
-
-#custom-network {
-  background: #458588;
-  padding: 8px 10px;
-  border-radius: 5px;
-}
-
-#custom-net-usage {
-  background: #458588;
-  padding: 8px 10px;
-  border-radius: 5px;
-}
-
+#cpu,
+#memory,
+#custom-fans,
+#custom-temperature,
+#custom-network,
+#custom-net-usage,
 #battery {
   background: #458588;
-  padding: 8px 10px;
-  border-radius: 5px;
 }
 
 #battery.charging.high,
