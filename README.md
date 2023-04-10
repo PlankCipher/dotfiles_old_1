@@ -19,7 +19,7 @@
 - Application launcher: [`lbonn's rofi fork`](https://github.com/lbonn/rofi)
 - Terminal: [`kitty`](https://github.com/kovidgoyal/kitty)
 - Shell: [`zsh`](https://www.zsh.org/) with [`Oh My Zsh`](https://ohmyz.sh/)
-- Image viewer: [`swayimg`](https://github.com/artemsen/swayimg)
+- Image viewer: [`imv`](https://sr.ht/~exec64/imv/)
 - Video player: [`mpv`](https://mpv.io/)
 - Music player: [`mpd`](https://wiki.archlinux.org/index.php/Music_Player_Daemon) and [`ncmpcpp`](https://wiki.archlinux.org/index.php/Ncmpcpp)
 - Notifications: [`dunst`](https://wiki.archlinux.org/index.php/Dunst) and [`libnotify`](https://wiki.archlinux.org/index.php/Desktop_notifications#Libnotify)

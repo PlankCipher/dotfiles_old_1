@@ -338,7 +338,7 @@ install_other_programs () {
 
 EOF
 
-  yay -S pavucontrol mpv zathura zathura-pdf-mupdf brave-bin zip unzip bat freetube-bin imagemagick dell-g5se-fanctl iw swayimg
+  yay -S pavucontrol mpv zathura zathura-pdf-mupdf brave-bin zip unzip bat freetube-bin imagemagick dell-g5se-fanctl iw imv
   sudo pacman -S thunderbird
   cp -r $SCRIPT_DIR/.config/zathura $HOME/.config/
 }
