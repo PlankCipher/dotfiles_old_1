@@ -62,7 +62,7 @@ lspconfig.eslint.setup({
 vim.diagnostic.config({
   virtual_text = {
     source = true,
-    prefix = 'ﱢ',
+    prefix = '',
   },
   float = {
     source = true,
