@@ -38,9 +38,9 @@ zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
 function steeef_precmd {
     if [[ -n $(git status -s 2> /dev/null | grep "??") ]]; then
-        FMT_BRANCH="%{$fg[yellow]%}(%{$fg[magenta]%}%b%u%c %{$fg[red]%}●%{$fg[yellow]%})${PR_RST}"
+        FMT_BRANCH="%{$fg[yellow]%}(%{$fg[red]%}$((git branch -v 2> /dev/null | grep -E 'ahead|behind' > /dev/null) && echo ' ')${PR_RST}%{$fg[magenta]%}%b%u%c%{$fg[red]%} ●%{$fg[yellow]%})${PR_RST}"
     else
-        FMT_BRANCH="%{$fg[yellow]%}(%{$fg[magenta]%}%b%u%c%{$fg[yellow]%})${PR_RST}"
+        FMT_BRANCH="%{$fg[yellow]%}(%{$fg[red]%}$((git branch -v 2> /dev/null | grep -E 'ahead|behind' > /dev/null) && echo ' ')${PR_RST}%{$fg[magenta]%}%b%u%c%{$fg[yellow]%})${PR_RST}"
     fi
     zstyle ':vcs_info:*:prompt:*' formats "${FMT_BRANCH} "
 
