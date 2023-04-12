@@ -5,7 +5,7 @@
 
   "modules-left": ["wlr/workspaces", "custom/screenlock-timeout", "hyprland/language", "mpd", "pulseaudio", "disk", "tray"],
   "modules-center": ["clock"],
-  "modules-right": ["cpu", "memory", "custom/fans", "custom/temperature", "custom/network", "custom/net-usage", "battery"],
+  "modules-right": ["cpu", "memory", "custom/fans", "custom/temperature", "custom/network", "custom/net-usage", "custom/battery"],
 
   "wlr/workspaces": {
     "format": "{icon}",
@@ -107,17 +107,10 @@
     "tooltip": false,
   },
 
-  "battery": {
-    "bat": "BAT0",
+  "custom/battery": {
+    "return-type": "json",
+    "exec": "$HOME/.scripts/battery.sh",
     "interval": 120,
-    "format": "{icon} {capacity}%",
-    "format-icons": ["", "", "", "", ""],
-    "format-charging": " {capacity}%",
-    "states": {
-      "high": 100,
-      "normal": 97,
-      "low": 15,
-    },
     "tooltip": false,
   },
 

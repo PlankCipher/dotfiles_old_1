@@ -45,7 +45,7 @@ window#waybar {
 #custom-temperature,
 #custom-network,
 #custom-net-usage,
-#battery {
+#custom-battery {
   border-radius: 5px;
   padding: 8px 10px;
 }
@@ -76,13 +76,11 @@ window#waybar {
 #custom-temperature,
 #custom-network,
 #custom-net-usage,
-#battery {
+#custom-battery {
   background: #458588;
 }
 
-#battery.charging.high,
-#battery.discharging.low,
-#battery.full {
+#custom-battery.blink {
   animation-name: blink;
   animation-duration: 0.3s;
   animation-timing-function: linear;
