@@ -48,7 +48,7 @@ return require('packer').startup({function(use)
   use('sbdchd/neoformat')
 
   use({
-    'nvim-telescope/telescope.nvim', tag = '*',
+    'nvim-telescope/telescope.nvim',
     requires = {'nvim-lua/plenary.nvim'}
   })
   use({'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
