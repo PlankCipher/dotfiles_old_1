@@ -13,7 +13,7 @@ install_build_utils () {
 
 EOF
 
-  sudo pacman -Syu git base-devel make qt5-tools qt5-base gcc wget clang
+  sudo pacman -Syu git git-delta base-devel make qt5-tools qt5-base gcc wget clang
 }
 
 install_yay () {
