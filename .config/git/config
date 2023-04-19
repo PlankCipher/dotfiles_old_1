@@ -7,6 +7,7 @@
 	tabs = 2
 	file-modified-label = modified:
 	keep-plus-minus-markers = true
+	zero-style = "#ffffff"
 	minus-style = "red"
 	plus-style = "green"
 	minus-emph-style = "#ffffff bold red"
