@@ -60,15 +60,16 @@ function zle-keymap-select {
   elif [[ ${KEYMAP} == main ]] ||
        [[ ${KEYMAP} == viins ]] ||
        [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
+       [[ $1 = 'beam' ]] ||
+       [[ $1 = 'underline' ]]; then
+    echo -ne '\e[3 q'
   fi
 }
 zle -N zle-keymap-select
 
-# Use beam cursor shape for each new prompt
+# Use underline cursor shape for each new prompt
 _fix_cursor() {
-   echo -ne '\e[5 q'
+   echo -ne '\e[3 q'
 }
 precmd_functions+=(_fix_cursor)
 
