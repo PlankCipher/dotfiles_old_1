@@ -48,5 +48,5 @@ function steeef_precmd {
 }
 add-zsh-hook precmd steeef_precmd
 
-PROMPT=$'%{$fg[yellow]%}┏━%{$fg[red]%}$(echo "$? " | sed "s/^0 $//")%{$fg[yellow]%}[%{$fg[cyan]%}%n%{$fg[yellow]%}@%{$fg[cyan]%}%m%{$fg[yellow]%}] %{$fg[blue]%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
+PROMPT=$'%{$fg[yellow]%}┏━%{$fg[red]%}$(echo "$? " | sed "s/^0 $//")%{$fg[yellow]%}(%{$fg[cyan]%}%n%{$fg[yellow]%}@%{$fg[cyan]%}%m%{$fg[yellow]%}) [%{$fg[blue]%}%~%{$fg[yellow]%}]${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
 %{$fg[yellow]%}┗━$ ${PR_RST}'
