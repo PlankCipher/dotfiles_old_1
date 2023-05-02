@@ -12,9 +12,15 @@ require('lualine').setup({
       {
         'mode',
         fmt = function(str) return str:sub(1,1) end,
-      }
+      },
     },
     lualine_b = {
+      {
+        'filetype',
+        icon_only = true,
+        separator = '',
+        padding = {left = 1, right = 0},
+      },
       {
         'filename',
         newfile_status = true,
@@ -24,7 +30,7 @@ require('lualine').setup({
           readonly = '',
           unnamed = '[No Name]',
           newfile = '',
-        }
+        },
       },
       {
         'branch',
@@ -35,7 +41,7 @@ require('lualine').setup({
         'diff',
         padding = {left = 0, right = 1},
         symbols = {added = ' ', modified = ' ', removed = ' '},
-      }
+      },
     },
     lualine_c = {
       {
@@ -52,7 +58,7 @@ require('lualine').setup({
 
           local unique_client_names = vim.fn.uniq(buf_client_names)
 
-          local language_servers = '[' .. table.concat(unique_client_names, ', ') .. ']'
+          local language_servers = ' ' .. table.concat(unique_client_names, ', ')
 
           return language_servers
         end,
@@ -67,13 +73,20 @@ require('lualine').setup({
           hint = ' '
         },
         update_in_insert = true,
-      }
+      },
     },
     lualine_x = {
-      'encoding',
+      {
+        'encoding',
+        icon = {''},
+      },
       {
         'fileformat',
-        icons_enabled = false,
+        symbols = {
+          unix = ' unix',
+          dos = ' dos',
+          mac = ' mac',
+        },
       },
       'filetype',
     },
@@ -81,12 +94,25 @@ require('lualine').setup({
       {
         'progress',
         fmt = function() return '%P/%L' end,
-      }
+        icon = {''},
+      },
     },
-    lualine_z = {'location'}
+    lualine_z = {
+      {
+        'location',
+        fmt = function(str) return str:gsub("^%s+", "") end,
+        icon = {''},
+      },
+    },
   },
   inactive_sections = {
     lualine_c = {
+      {
+        'filetype',
+        icon_only = true,
+        separator = '',
+        padding = {left = 1, right = 0},
+      },
       {
         'filename',
         newfile_status = true,
@@ -96,7 +122,7 @@ require('lualine').setup({
           readonly = '',
           unnamed = '[No Name]',
           newfile = '',
-        }
+        },
       },
     },
     lualine_x = {},
@@ -112,7 +138,7 @@ require('lualine').setup({
         },
         mode = 2,
         max_length = vim.o.columns,
-      }
+      },
     },
-  }
+  },
 })
