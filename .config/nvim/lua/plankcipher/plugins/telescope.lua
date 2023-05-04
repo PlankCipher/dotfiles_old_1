@@ -66,6 +66,7 @@ telescope.setup({
     sorting_strategy = 'ascending',
     prompt_prefix = '> ',
     dynamic_preview_title = true,
+    results_title = '',
     vimgrep_arguments = {
       'rg',
       '--color=never',
