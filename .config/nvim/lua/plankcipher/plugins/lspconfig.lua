@@ -72,13 +72,8 @@ vim.diagnostic.config({
   },
   update_in_insert = true,
   severity_sort = true,
+  signs = false,
 })
-
-local signs = {Error = '', Warn = '', Hint = '', Info = ''}
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
-end
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
