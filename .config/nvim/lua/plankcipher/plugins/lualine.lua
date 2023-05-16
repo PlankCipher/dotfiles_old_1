@@ -104,7 +104,7 @@ require('lualine').setup({
 
           local unique_client_names = vim.fn.uniq(buf_client_names)
 
-          local language_servers = ' ' .. table.concat(unique_client_names, ', ')
+          local language_servers = ' ' .. table.concat(unique_client_names, ', ')
 
           return language_servers
         end,
@@ -116,7 +116,7 @@ require('lualine').setup({
           error = ' ',
           warn = ' ',
           info = ' ',
-          hint = ' '
+          hint = '󰌵 ',
         },
         update_in_insert = true,
       },
@@ -147,7 +147,7 @@ require('lualine').setup({
       {
         'location',
         fmt = function(str) return str:gsub("^%s+", "") end,
-        icon = {''},
+        icon = {'󰙏'},
       },
     },
   },
