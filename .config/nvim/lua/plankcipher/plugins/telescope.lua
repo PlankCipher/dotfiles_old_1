@@ -82,9 +82,10 @@ telescope.setup({
       },
     },
     sorting_strategy = 'ascending',
-    prompt_prefix = '> ',
+    prompt_prefix = ' ',
+    selection_caret = '󰘍 ',
     dynamic_preview_title = true,
-    results_title = '',
+    results_title = false,
     vimgrep_arguments = {
       'rg',
       '--color=never',
