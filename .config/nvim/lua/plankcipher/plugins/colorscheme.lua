@@ -152,3 +152,45 @@ for hl_group, value in pairs(ts_highlights) do
   value.default = true
   hl(hl_group, value)
 end
+
+local cmp_kind_highlights = {
+  ['CmpItemKindArray'] = '@type',
+  ['CmpItemKindBoolean'] = '@boolean',
+  ['CmpItemKindClass'] = '@type',
+  ['CmpItemKindColor'] = '@constant',
+  ['CmpItemKindConstant'] = '@constant',
+  ['CmpItemKindConstructor'] = '@constructor',
+  ['CmpItemKindEnum'] = '@type',
+  ['CmpItemKindEnumMember'] = '@constant',
+  ['CmpItemKindEvent'] = '@type',
+  ['CmpItemKindField'] = '@field',
+  ['CmpItemKindFile'] = '@include',
+  ['CmpItemKindFolder'] = '@include',
+  ['CmpItemKindFunction'] = '@function',
+  ['CmpItemKindInterface'] = '@type',
+  ['CmpItemKindKey'] = '@keyword',
+  ['CmpItemKindKeyword'] = '@keyword',
+  ['CmpItemKindMethod'] = '@method',
+  ['CmpItemKindModule'] = '@include',
+  ['CmpItemKindNamespace'] = '@namespace',
+  ['CmpItemKindNull'] = '@constant',
+  ['CmpItemKindNumber'] = '@number',
+  ['CmpItemKindObject'] = '@storageclass',
+  ['CmpItemKindOperator'] = '@operator',
+  ['CmpItemKindPackage'] = '@include',
+  ['CmpItemKindProperty'] = '@property',
+  ['CmpItemKindReference'] = '@parameter.reference',
+  ['CmpItemKindSnippet'] = '@constant',
+  ['CmpItemKindString'] = '@string',
+  ['CmpItemKindStruct'] = '@type',
+  ['CmpItemKindText'] = '@string',
+  ['CmpItemKindTypeParameter'] = '@parameter',
+  ['CmpItemKindUnit'] = '@constant',
+  ['CmpItemKindValue'] = '@constant',
+  ['CmpItemKindVariable'] = '@field',
+}
+
+for cmp_item_kind, hl_group in pairs(cmp_kind_highlights) do
+  only_fg_hl = {fg = string.format('#%x', vim.api.nvim_get_hl(0, {name = hl_group, link = false}).fg)}
+  hl(cmp_item_kind, only_fg_hl)
+end
