@@ -144,10 +144,10 @@ telescope.setup({
     oldfiles = {mappings = multi_selection_i_mappings, prompt_title = '󰞌 Oldfiles'},
     quickfix = {mappings = multi_selection_i_mappings, prompt_title = ' Quickfix'},
     loclist = {mappings = multi_selection_i_mappings, prompt_title = ' Loclist'},
-    git_status = {mappings = multi_selection_i_mappings, prompt_title = '󰦒 Git Status'},
+    git_status = {mappings = multi_selection_i_mappings, prompt_title = '󰦒 Git Status', preview_title = '󰦒 Git File Diff Preview'},
     lsp_definitions = {mappings = multi_selection_i_mappings, prompt_title = ' LSP Definitions'},
     lsp_references = {mappings = multi_selection_i_mappings, prompt_title = ' LSP References'},
-    man_pages = {prompt_title = ' Man'},
+    man_pages = {prompt_title = ' Man', preview_title = ' Man Preview'},
   },
   extensions = {
     ['ui-select'] = {
