@@ -2,6 +2,11 @@ local telescope = require('telescope')
 local themes = require('telescope.themes')
 local actions = require('telescope.actions')
 local action_state = require('telescope.actions.state')
+local previewers = require('telescope.previewers')
+local utils = require('telescope.utils')
+local from_entry = require('telescope.from_entry')
+local devicons = require('nvim-web-devicons')
+local Path = require('plenary.path')
 
 local custom_actions = {}
 
@@ -39,6 +44,19 @@ end
 
 function custom_actions.reset_prompt(prompt_bufnr)
   action_state.get_current_picker(prompt_bufnr):reset_prompt()
+end
+
+function dynamic_title_with_icon(_, entry)
+  local filepath = Path:new(from_entry.path(entry, false, false)):normalize(vim.loop.cwd())
+
+  local basename = utils.path_tail(filepath)
+  local icon, _ = devicons.get_icon(basename, utils.file_extension(basename), { default = false })
+  if not icon then
+    icon, _ = devicons.get_icon(basename, nil, { default = true })
+    icon = icon or ''
+  end
+
+  return icon .. ' ' .. filepath
 end
 
 local multi_selection_i_mappings = {
@@ -88,6 +106,24 @@ telescope.setup({
         ['<C-j>'] = actions.preview_scrolling_down,
       },
     },
+    preview = {
+      msg_bg_fillchar = '░',
+    },
+    file_previewer = function(...)
+      local orig_file_previewer = previewers.vim_buffer_cat.new(...)
+      orig_file_previewer._dyn_title_fn = dynamic_title_with_icon
+      return orig_file_previewer
+    end,
+    grep_previewer = function(...)
+      local orig_grep_previewer = previewers.vim_buffer_vimgrep.new(...)
+      orig_grep_previewer._dyn_title_fn = dynamic_title_with_icon
+      return orig_grep_previewer
+    end,
+    qflist_previewer = function(...)
+      local orig_qflist_previewer = previewers.vim_buffer_qflist.new(...)
+      orig_qflist_previewer._dyn_title_fn = dynamic_title_with_icon
+      return orig_qflist_previewer
+    end,
   },
   pickers = {
     find_files = {

@@ -49,6 +49,7 @@ hl('CmpItemMenu', {link = 'CmpItemAbbrDeprecated'})
 hl('TelescopeBorder', {ctermfg = 208, fg = '#fe8019'})
 hl('TelescopeSelection', {link = 'CursorLine'})
 hl('TelescopeSelectionCaret', {ctermfg = 208, ctermbg = 238, fg = '#fe8019', bg = '#444444', bold = true})
+hl('TelescopePreviewMessageFillchar', {fg = '#a89984'})
 
 hl('GitSignsAdd', {fg='#b8bb26', bg='#b8bb26'})
 hl('GitSignsChange', {fg='#8ec07c', bg='#8ec07c'})
