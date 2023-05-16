@@ -24,16 +24,16 @@ function custom_actions._multiopen(prompt_bufnr, open_cmd)
 end
 
 function custom_actions.multi_selection_open(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "edit")
+  custom_actions._multiopen(prompt_bufnr, 'edit')
 end
 
 function custom_actions.multi_selection_open_vsplit(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "vsplit")
+  custom_actions._multiopen(prompt_bufnr, 'vsplit')
   vim.api.nvim_cmd({cmd = 'quit', args = {}}, {})
 end
 
 function custom_actions.multi_selection_open_split(prompt_bufnr)
-  custom_actions._multiopen(prompt_bufnr, "split")
+  custom_actions._multiopen(prompt_bufnr, 'split')
   vim.api.nvim_cmd({cmd = 'quit', args = {}}, {})
 end
 
