@@ -130,21 +130,24 @@ telescope.setup({
     find_files = {
       find_command = {'rg', '--files', '--hidden', '--glob', '!node_modules', '--glob', '!.git'},
       mappings = multi_selection_i_mappings,
+      prompt_title = '󰈙 Find Files',
     },
     spell_suggest = {
       theme = 'dropdown',
       layout_config = {
         height = 0.5,
       },
+      prompt_title = '󰸟 Spelling Suggestions',
     },
-    live_grep = {mappings = multi_selection_i_mappings},
-    buffers = {mappings = multi_selection_i_mappings},
-    oldfiles = {mappings = multi_selection_i_mappings},
-    quickfix = {mappings = multi_selection_i_mappings},
-    loclist = {mappings = multi_selection_i_mappings},
-    git_status = {mappings = multi_selection_i_mappings},
-    lsp_definitions = {mappings = multi_selection_i_mappings},
-    lsp_references = {mappings = multi_selection_i_mappings},
+    live_grep = {mappings = multi_selection_i_mappings, prompt_title = ' Live Grep'},
+    buffers = {mappings = multi_selection_i_mappings, prompt_title = ' Buffers'},
+    oldfiles = {mappings = multi_selection_i_mappings, prompt_title = '󰞌 Oldfiles'},
+    quickfix = {mappings = multi_selection_i_mappings, prompt_title = ' Quickfix'},
+    loclist = {mappings = multi_selection_i_mappings, prompt_title = ' Loclist'},
+    git_status = {mappings = multi_selection_i_mappings, prompt_title = '󰦒 Git Status'},
+    lsp_definitions = {mappings = multi_selection_i_mappings, prompt_title = ' LSP Definitions'},
+    lsp_references = {mappings = multi_selection_i_mappings, prompt_title = ' LSP References'},
+    man_pages = {prompt_title = ' Man'},
   },
   extensions = {
     ['ui-select'] = {
