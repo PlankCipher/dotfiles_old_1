@@ -19,13 +19,7 @@ function custom_actions._multiopen(prompt_bufnr, open_cmd)
   end
   actions.send_selected_to_qflist(prompt_bufnr)
 
-  local initial_bufnr = vim.api.nvim_get_current_buf()
-
   vim.cmd('silent cfdo ' .. open_cmd)
-
-  if vim.api.nvim_buf_get_name(initial_bufnr) == '' then
-    vim.api.nvim_buf_delete(initial_bufnr, {})
-  end
 end
 
 function custom_actions.multi_selection_open(prompt_bufnr)

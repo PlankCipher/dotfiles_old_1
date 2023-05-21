@@ -3,6 +3,7 @@ require('plankcipher.settings')
 -- Plugins
 require('plankcipher.plugins.plugins')
 require('plankcipher.plugins.colorscheme')
+require('plankcipher.plugins.devicons')
 require('plankcipher.plugins.lualine')
 require('plankcipher.plugins.terminal')
 require('plankcipher.plugins.treesitter')
@@ -14,6 +15,7 @@ require('plankcipher.plugins.telescope')
 require('plankcipher.plugins.visual_multi')
 require('plankcipher.plugins.comment')
 require('plankcipher.plugins.formatting.formatting')
+require('plankcipher.plugins.dashboard.dashboard')
 
 -- Keymappings
 vim.g.mapleader = ' '
