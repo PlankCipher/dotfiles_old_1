@@ -95,9 +95,10 @@ vim.api.nvim_create_autocmd('BufNew', {
       vim.opt.list = true
       vim.opt.cursorline = true
 
-      vim.api.nvim_set_current_buf(e.buf)
-      vim.api.nvim_buf_delete(vim.api.nvim_win_get_buf(term_art_win), {force = true})
-      vim.api.nvim_buf_delete(buf, {})
+      vim.schedule(function()
+        vim.api.nvim_buf_delete(vim.api.nvim_win_get_buf(term_art_win), {force = true})
+        vim.api.nvim_buf_delete(buf, {})
+      end)
 
       dashboard_open = false
     end
