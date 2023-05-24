@@ -72,10 +72,10 @@ require('lualine').setup({
         newfile_status = true,
         path = 1,
         symbols = {
-          modified = '',
+          modified = '󰑊',
           readonly = '',
           unnamed = '[No Name]',
-          newfile = '',
+          newfile = '󱇬',
         },
       },
       {
@@ -86,7 +86,7 @@ require('lualine').setup({
       {
         'diff',
         padding = {left = 0, right = 1},
-        symbols = {added = ' ', modified = ' ', removed = ' '},
+        symbols = {added = '󰌴 ', modified = '󱅄 ', removed = '󱅁 '},
       },
     },
     lualine_c = {
@@ -104,7 +104,7 @@ require('lualine').setup({
 
           local unique_client_names = vim.fn.uniq(buf_client_names)
 
-          local language_servers = ' ' .. table.concat(unique_client_names, ', ')
+          local language_servers = '  ' .. table.concat(unique_client_names, ', ')
 
           return language_servers
         end,
@@ -113,10 +113,10 @@ require('lualine').setup({
         'diagnostics',
         sources = {'nvim_lsp'},
         symbols = {
-          error = ' ',
-          warn = ' ',
-          info = ' ',
-          hint = '󰌵 ',
+          error = ' ',
+          warn = ' ',
+          info = ' ',
+          hint = ' ',
         },
         update_in_insert = true,
       },
@@ -151,34 +151,12 @@ require('lualine').setup({
       },
     },
   },
-  inactive_sections = {
-    lualine_c = {
-      {
-        'filetype',
-        icon_only = true,
-        separator = '',
-        padding = {left = 1, right = 0},
-      },
-      {
-        'filename',
-        newfile_status = true,
-        path = 1,
-        symbols = {
-          modified = '',
-          readonly = '',
-          unnamed = '[No Name]',
-          newfile = '',
-        },
-      },
-    },
-    lualine_x = {},
-  },
   tabline = {
     lualine_a = {
       {
         'buffers',
         symbols = {
-          modified = ' ',
+          modified = ' 󰑊',
           alternate_file = '#',
           directory = '',
         },

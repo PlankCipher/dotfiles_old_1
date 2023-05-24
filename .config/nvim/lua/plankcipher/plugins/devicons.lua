@@ -2,12 +2,12 @@ require('nvim-web-devicons').setup({
   strict = true,
   override_by_filename = {
     ['send help'] = {
-      icon = '',
+      icon = '',
       color = '#fabd2f',
       name = 'Dashboard'
     },
     ['telescope'] = {
-      icon = '',
+      icon = '󰭎',
       color = '#83a598',
       name = 'Telescope'
     },
