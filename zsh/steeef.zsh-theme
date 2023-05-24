@@ -1,52 +1,46 @@
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo "%{$fg[yellow]%}(%{$fg[magenta]%}`basename $VIRTUAL_ENV`%{$fg[yellow]%})%f "
-}
-
 setopt prompt_subst
 
 autoload -U add-zsh-hook
 autoload -Uz vcs_info
 
-# enable VCS systems you use
-# zstyle ':vcs_info:*' enable git svn
 zstyle ':vcs_info:*' enable git
-
-# check-for-changes can be really slow.
-# you should disable it, if you work with large repositories
 zstyle ':vcs_info:*:prompt:*' check-for-changes true
 
-# set formats
-# %b - branchname
-# %u - unstagedstr (see below)
-# %c - stagedstr (see below)
-# %a - action (e.g. rebase-i)
-# %R - repository path
-# %S - path in the repository
 PR_RST="%f"
-FMT_BRANCH="%{$fg[yellow]%}(%{$fg[magenta]%}%b%u%c%{$fg[yellow]%})${PR_RST}"
-FMT_ACTION="%{$fg[yellow]%}(%{$fg[green]%}%a%{$fg[yellow]%})${PR_RST}"
-FMT_UNSTAGED="%{$fg[blue]%} ●"
-FMT_STAGED="%{$fg[green]%} ●"
+
+FMT_UNSTAGED="%{$fg[blue]%}󰑊${PR_RST}"
+FMT_STAGED="%{$fg[green]%}󰑊${PR_RST}"
+FMT_BRANCH="%{$fg[magenta]%}%b %u%c${PR_RST}"
+FMT_ACTION="%{$fg[yellow]%}(%{$fg[blue]%}%a%{$fg[yellow]%})${PR_RST}"
 
 zstyle ':vcs_info:*:prompt:*' unstagedstr   "${FMT_UNSTAGED}"
 zstyle ':vcs_info:*:prompt:*' stagedstr     "${FMT_STAGED}"
-zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION}"
-zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
 function steeef_precmd {
-    if [[ -n $(git status -s 2> /dev/null | grep "??") ]]; then
-        FMT_BRANCH="%{$fg[yellow]%}(%{$fg[red]%}$((git branch -v 2> /dev/null | grep -E 'ahead|behind' > /dev/null) && echo ' ')${PR_RST}%{$fg[magenta]%}%b%u%c%{$fg[red]%} ●%{$fg[yellow]%})${PR_RST}"
-    else
-        FMT_BRANCH="%{$fg[yellow]%}(%{$fg[red]%}$((git branch -v 2> /dev/null | grep -E 'ahead|behind' > /dev/null) && echo ' ')${PR_RST}%{$fg[magenta]%}%b%u%c%{$fg[yellow]%})${PR_RST}"
-    fi
-    zstyle ':vcs_info:*:prompt:*' formats "${FMT_BRANCH} "
+  OUT_OF_SYNC_WITH_REMOTE="%{$fg[red]%}$((git branch -v 2> /dev/null | grep -E 'ahead|behind' > /dev/null) && echo '  ')${PR_RST}"
+  UNTRACKED="%{$fg[red]%}$((git status -s 2> /dev/null | grep '??' > /dev/null) && echo '󰑊')${PR_RST}"
 
-    vcs_info 'prompt'
+  VCS_INFO="%{$fg[yellow]%}(${OUT_OF_SYNC_WITH_REMOTE}${FMT_BRANCH}${UNTRACKED}%{$fg[yellow]%})${PR_RST}"
+
+  zstyle ':vcs_info:*:prompt:*' formats "${VCS_INFO} "
+  zstyle ':vcs_info:*:prompt:*' actionformats "${VCS_INFO} ${FMT_ACTION} "
+
+  vcs_info 'prompt'
 }
 add-zsh-hook precmd steeef_precmd
 
-PROMPT=$'%{$fg[yellow]%}┏━%{$fg[red]%}$(echo "$? " | sed "s/^0 $//")%{$fg[yellow]%}(%{$fg[cyan]%}%n%{$fg[yellow]%}@%{$fg[cyan]%}%m%{$fg[yellow]%}) [%{$fg[blue]%}%~%{$fg[yellow]%}]${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
-%{$fg[yellow]%}┗━$ ${PR_RST}'
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+function virtualenv_info {
+  [ $VIRTUAL_ENV ] && echo "%{$fg[yellow]%}(%{$fg[green]%}venv: $(basename $VIRTUAL_ENV)%{$fg[yellow]%})${PR_RST}"
+}
+
+PROMPT='%{$fg[yellow]%}┏━'
+PROMPT+='%{$fg[red]%}$(echo "$? " | sed "s/^0 $//")'
+PROMPT+='%{$fg[yellow]%}(%{$fg[cyan]%}%n%{$fg[yellow]%}@%{$fg[cyan]%}%m%{$fg[yellow]%}) '
+PROMPT+='[%{$fg[blue]%}%~%{$fg[yellow]%}] '
+PROMPT+='$(((echo $vcs_info_msg_0_ | grep "󰑊" > /dev/null) && echo $vcs_info_msg_0_) || (echo $vcs_info_msg_0_ | sed -E "s/([^][^ ]) (%.*})\)/\1\2)/"))'
+PROMPT+='$(virtualenv_info)'
+PROMPT+=$'\n'
+PROMPT+='%{$fg[yellow]%}┗━$ ${PR_RST}'
