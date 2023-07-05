@@ -98,7 +98,7 @@ EOF
   sudo unzip $HOME/Downloads/Compressed/hack_nerd_font.zip -d /usr/share/fonts/TTF/
   rm -rf $HOME/Downloads/Compressed/*
 
-  sudo pacman -S neovim
+  yay -S neovim-git
 
   cp -r $SCRIPT_DIR/.config/nvim $HOME/.config/
 }
