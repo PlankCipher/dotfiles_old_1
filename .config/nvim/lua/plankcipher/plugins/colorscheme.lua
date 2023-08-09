@@ -51,6 +51,7 @@ hl('CmpItemAbbrMatch', {link = 'Special'})
 hl('CmpItemAbbrMatchFuzzy', {link = 'CmpItemAbbrMatch'})
 hl('CmpItemKind', {link = 'Keyword'})
 hl('CmpItemMenu', {link = 'CmpItemAbbrDeprecated'})
+hl('cmp_ghost_text', {fg = '#d3869b', bg = '#222222'})
 
 hl('TelescopeBorder', {fg = '#fe8019'})
 hl('TelescopeSelection', {link = 'CursorLine'})
