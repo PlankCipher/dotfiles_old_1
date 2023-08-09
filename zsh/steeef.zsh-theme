@@ -27,13 +27,43 @@ function steeef_precmd {
   zstyle ':vcs_info:*:prompt:*' actionformats "${VCS_INFO} ${FMT_ACTION} "
 
   vcs_info 'prompt'
+
+  ((STEEEF_COMMAND_START > -1)) &&
+    STEEEF_COMMAND_DURATION=$((SECONDS - STEEEF_COMMAND_START)) ||
+    STEEEF_COMMAND_DURATION=0
+  STEEEF_COMMAND_START=-1
 }
 add-zsh-hook precmd steeef_precmd
 
-export VIRTUAL_ENV_DISABLE_PROMPT=1
+function steeef_preexec {
+  STEEEF_COMMAND_START=$SECONDS
+}
+add-zsh-hook preexec steeef_preexec
 
+function last_command_duration {
+  DURATION_DAYS=$((STEEEF_COMMAND_DURATION / (60 * 60 * 24)))
+  STEEEF_COMMAND_DURATION=$((STEEEF_COMMAND_DURATION % (60 * 60 * 24)))
+
+  DURATION_HRS=$((STEEEF_COMMAND_DURATION / (60 * 60)))
+  STEEEF_COMMAND_DURATION=$((STEEEF_COMMAND_DURATION % (60 * 60)))
+
+  DURATION_MINS=$((STEEEF_COMMAND_DURATION / (60)))
+  STEEEF_COMMAND_DURATION=$((STEEEF_COMMAND_DURATION % (60)))
+
+  DURATION_SECS=$STEEEF_COMMAND_DURATION
+
+  COMMAND_DURATION_MSG=''
+  ((DURATION_DAYS > 0)) && COMMAND_DURATION_MSG+="${DURATION_DAYS}d "
+  ((DURATION_HRS > 0)) && COMMAND_DURATION_MSG+="${DURATION_HRS}h "
+  ((DURATION_MINS > 0)) && COMMAND_DURATION_MSG+="${DURATION_MINS}m "
+  COMMAND_DURATION_MSG+="${DURATION_SECS}s"
+
+  echo "%{$fg[yellow]%}(%{$fg[cyan]%}took $COMMAND_DURATION_MSG%{$fg[yellow]%})"
+}
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 function virtualenv_info {
-  [ $VIRTUAL_ENV ] && echo "%{$fg[yellow]%}(%{$fg[green]%}venv: $(basename $VIRTUAL_ENV)%{$fg[yellow]%})${PR_RST}"
+  [ $VIRTUAL_ENV ] && echo "%{$fg[yellow]%}(%{$fg[green]%}venv: $(basename $VIRTUAL_ENV)%{$fg[yellow]%})${PR_RST} "
 }
 
 PROMPT='%{$fg[yellow]%}┏━'
@@ -42,5 +72,6 @@ PROMPT+='%{$fg[yellow]%}(%{$fg[cyan]%}%n%{$fg[yellow]%}@%{$fg[cyan]%}%m%{$fg[yel
 PROMPT+='[%{$fg[blue]%}%~%{$fg[yellow]%}] '
 PROMPT+='$(((echo $vcs_info_msg_0_ | grep "󰑊" > /dev/null) && echo $vcs_info_msg_0_) || (echo $vcs_info_msg_0_ | sed -E "s/([^][^ ]) (%.*})\)/\1\2)/"))'
 PROMPT+='$(virtualenv_info)'
+PROMPT+='$(last_command_duration)'
 PROMPT+=$'\n'
 PROMPT+='%{$fg[yellow]%}┗━$ ${PR_RST}'
