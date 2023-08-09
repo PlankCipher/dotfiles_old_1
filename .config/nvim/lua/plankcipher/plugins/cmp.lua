@@ -2,31 +2,31 @@ local luasnip = require('luasnip')
 local cmp = require('cmp')
 
 local kind_icons = {
-  Text = '',
-  Method = '',
-  Function = '󰊕',
-  Constructor = '',
-  Field = '󰜢',
-  Variable = '󰀫',
-  Class = '󰠱',
-  Interface = '',
-  Module = '',
-  Property = '󰜢',
-  Unit = '',
-  Value = '󰎠',
-  Enum = '',
-  Keyword = '󰌋',
-  Snippet = '󰅴',
-  Color = '󰉦',
-  File = '󰈙',
-  Reference = '',
-  Folder = '',
-  EnumMember = '',
-  Constant = '󰏿',
-  Struct = '󰙅',
-  Event = '',
-  Operator = '󱓉',
-  TypeParameter = '',
+  Text = ' TXT',
+  Method = ' MTD',
+  Function = '󰊕 FUN',
+  Constructor = ' CON',
+  Field = '󰜢 FLD',
+  Variable = '󰀫 VAR',
+  Class = '󰠱 CLS',
+  Interface = ' IFC',
+  Module = ' MOD',
+  Property = '󰜢 PRP',
+  Unit = ' UNT',
+  Value = '󰎠 VAL',
+  Enum = ' ENM',
+  Keyword = '󰌋 KWD',
+  Snippet = '󰅴 SNP',
+  Color = '󰉦 CLR',
+  File = '󰈙 FIL',
+  Reference = ' REF',
+  Folder = ' FDR',
+  EnumMember = ' EMR',
+  Constant = '󰏿 CNS',
+  Struct = '󰙅 STR',
+  Event = ' EVN',
+  Operator = '󱓉 OPR',
+  TypeParameter = ' TYP',
 }
 
 cmp.setup({
@@ -68,19 +68,22 @@ cmp.setup({
     {name = 'luasnip'},
   },
   formatting = {
+    fields = {'kind', 'abbr', 'menu'},
     format = function(entry, vim_item)
-      vim_item.kind = string.format('  %s %s', kind_icons[vim_item.kind], vim_item.kind)
-      vim_item.menu = ({
-        path = '[Path]',
-        buffer = '[Buffer]',
-        nvim_lsp = '[LSP]',
-        luasnip = '[Snip]',
-      })[entry.source.name]
+      vim_item.kind = kind_icons[vim_item.kind]
+      vim_item.abbr = string.format('│ %s', vim_item.abbr:gsub('^%s+', ''))
+      vim_item.menu = string.format('│ %s', ({
+        path = '󰈙 PTH',
+        buffer = ' BUF',
+        nvim_lsp = '󰒓 LSP',
+        luasnip = '󰅴 SNP',
+      })[entry.source.name])
+
       return vim_item
     end
   },
   window = {
-    completion = {border = 'rounded'},
+    completion = {border = 'rounded', col_offset = -9},
     documentation = {border = 'rounded'},
   },
   experimental = {
