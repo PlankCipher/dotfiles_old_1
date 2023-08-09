@@ -11,18 +11,18 @@ local hl = function(hl_group, value)
   vim.api.nvim_set_hl(0, hl_group, value)
 end
 
-hl('Normal', {ctermfg = 223, ctermbg = 'None', fg = '#ebdbb2', bg = 'None'})
-hl('SignColumn', {ctermbg = 'None', bg = 'None'})
-hl('VertSplit', {ctermfg = 241, ctermbg = 'None', fg = '#665c54', bg = 'None'})
+hl('Normal', {fg = '#ebdbb2', bg = 'None'})
+hl('SignColumn', {bg = 'None'})
+hl('WinSeparator', {fg = '#665c54', bg = 'None'})
 hl('markdownError', {link = 'None'})
 
-hl('CursorLineNr', {ctermfg = 214, ctermbg = 'None', fg = '#fabd2f', bg = 'None'})
-hl('CursorLine', {ctermbg = 238, bg = '#444444'})
+hl('CursorLineNr', {fg = '#fabd2f', bg = 'None'})
+hl('CursorLine', {bg = '#444444'})
 
 hl('CurSearch', {link = 'IncSearch'})
 
-hl('NonText', {ctermfg = 242, ctermbg = 'None', fg = '#6c6c6c', bg = 'None'})
-hl('TrailingWhitespace', {ctermfg = 'white', ctermbg = 'red', fg = '#ffffff', bg = '#ff0000', bold = true})
+hl('NonText', {fg = '#6c6c6c', bg = 'None'})
+hl('TrailingWhitespace', {fg = '#ffffff', bg = '#ff0000', bold = true})
 
 vim.api.nvim_cmd({cmd = 'match', args = {'TrailingWhitespace', [[/\s\+$/]]}}, {})
 vim.api.nvim_create_autocmd('WinEnter', {
@@ -34,11 +34,17 @@ vim.api.nvim_create_autocmd('FileType', {
   command = 'match none',
 })
 
-hl('ColorColumn', {ctermbg = 226, bg = '#555555'})
-hl('Todo', {ctermfg = 234, ctermbg = 208, fg = '#1d2021', bg = '#fe8019', bold = true})
+vim.api.nvim_create_autocmd('TermEnter', {
+  pattern = '*',
+  command = 'match none',
+})
 
-hl('Pmenu', {ctermfg = 223, ctermbg = 'None', fg = '#ebdbb2', bg = 'None'})
-hl('NormalFloat', {ctermfg = 223, ctermbg = 'None', fg = '#ebdbb2', bg = 'None'})
+hl('ColorColumn', {bg = '#555555'})
+hl('Todo', {fg = '#1d2021', bg = '#fe8019', bold = true})
+
+hl('Pmenu', {fg = '#ebdbb2', bg = 'None'})
+hl('PmenuSel', {fg = '#282828', bg = '#b8bb26', bold = true})
+hl('NormalFloat', {fg = '#ebdbb2', bg = 'None'})
 hl('FloatBorder', {link = 'NormalFloat'})
 
 hl('CmpItemAbbrMatch', {link = 'Special'})
@@ -46,19 +52,19 @@ hl('CmpItemAbbrMatchFuzzy', {link = 'CmpItemAbbrMatch'})
 hl('CmpItemKind', {link = 'Keyword'})
 hl('CmpItemMenu', {link = 'CmpItemAbbrDeprecated'})
 
-hl('TelescopeBorder', {ctermfg = 208, fg = '#fe8019'})
+hl('TelescopeBorder', {fg = '#fe8019'})
 hl('TelescopeSelection', {link = 'CursorLine'})
-hl('TelescopeSelectionCaret', {ctermfg = 208, ctermbg = 238, fg = '#fe8019', bg = '#444444', bold = true})
-hl('TelescopePreviewMessageFillchar', {fg = '#a89984'})
+hl('TelescopeSelectionCaret', {fg = '#fe8019', bg = '#444444', bold = true})
+hl('TelescopePreviewMessageFillchar', {fg = '#b7ab99'})
 
 hl('GitSignsAdd', {fg = '#b8bb26', bg = 'none'})
 hl('GitSignsChange', {fg = '#83a598', bg = 'none'})
 hl('GitSignsDelete', {fg = '#fb4934', bg = 'none'})
 
-hl('DiagnosticVirtualTextError', {ctermfg = 1, fg = '#ff0000', bg = '#581818'})
-hl('DiagnosticVirtualTextHint', {ctermfg = 7, fg = '#d3d3d3', bg = '#4c4f4f'})
-hl('DiagnosticVirtualTextWarn', {ctermfg = 3, fg = '#ffa500', bg = '#584318'})
-hl('DiagnosticVirtualTextInfo', {ctermfg = 4, fg = '#add8e6', bg = '#425054'})
+hl('DiagnosticVirtualTextError', {fg = '#ff0000', bg = '#581818'})
+hl('DiagnosticVirtualTextHint', {fg = '#d3d3d3', bg = '#4c4f4f'})
+hl('DiagnosticVirtualTextWarn', {fg = '#ffa500', bg = '#584318'})
+hl('DiagnosticVirtualTextInfo', {fg = '#add8e6', bg = '#425054'})
 
 hl('DiagnosticUnderlineError', {sp = '#ff0000', underline = true})
 hl('DiagnosticUnderlineHint', {sp = '#d3d3d3', underline = true})
