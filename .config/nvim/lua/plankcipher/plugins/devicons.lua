@@ -11,6 +11,11 @@ require('nvim-web-devicons').setup({
       color = '#83a598',
       name = 'Telescope'
     },
+    ['[packer]'] = {
+      icon = '',
+      color = '#8ec07c',
+      name = 'Packer'
+    },
   },
 })
 
