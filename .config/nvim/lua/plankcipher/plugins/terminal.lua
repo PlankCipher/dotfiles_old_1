@@ -6,7 +6,6 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.opt_local.relativenumber = false
 
     vim.api.nvim_cmd({cmd = 'startinsert'}, {})
-    vim.api.nvim_cmd({cmd = 'match', args = {'none'}}, {})
 
     vim.b.close_on_0_status = vim.g.close_on_0_status
     vim.g.close_on_0_status = nil
@@ -18,7 +17,7 @@ vim.api.nvim_create_autocmd('TermClose', {
   callback = function(args)
     if vim.v.event.status == 0 and vim.b.close_on_0_status then
       vim.api.nvim_buf_delete(args.buf, {})
+      vim.api.nvim_cmd({cmd = 'match', args = {'TrailingWhitespace', [[/\s\+$/]]}}, {})
     end
-    vim.api.nvim_cmd({cmd = 'match', args = {'TrailingWhitespace', [[/\s\+$/]]}}, {})
   end,
 })
