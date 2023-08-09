@@ -41,9 +41,9 @@ function custom_actions.reset_prompt(prompt_bufnr)
 end
 
 function dynamic_title_with_icon(_, entry)
-  local filepath = Path:new(from_entry.path(entry, false, false)):normalize(vim.loop.cwd())
-
+  local filepath = Path:new(from_entry.path(entry, false, false)):normalize(vim.uv.cwd())
   local basename = utils.path_tail(filepath)
+
   local icon, _ = devicons.get_icon(basename, utils.file_extension(basename), { default = false })
   if not icon then
     icon, _ = devicons.get_icon(basename, nil, { default = true })
