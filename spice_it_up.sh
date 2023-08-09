@@ -93,9 +93,9 @@ EOF
   yarn global add vscode-langservers-extracted typescript typescript-language-server emmet-ls prettier @fsouza/prettierd pyright
   pip install yapf
 
-  # Install Hack Nerd Font
-  curl -Lo $HOME/Downloads/Compressed/hack_nerd_font.zip 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip'
-  sudo unzip $HOME/Downloads/Compressed/hack_nerd_font.zip -d /usr/share/fonts/TTF/
+  # Install JetBrainsMono Nerd font
+  curl -Lo $HOME/Downloads/Compressed/jetbrainsmono_nerd_font.zip 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip'
+  sudo unzip $HOME/Downloads/Compressed/jetbrainsmono_nerd_font.zip -d /usr/share/fonts/TTF/
   rm -rf $HOME/Downloads/Compressed/*
 
   yay -S neovim-git

@@ -12,7 +12,7 @@
 	plus-style = "green"
 	minus-emph-style = "#ffffff bold red"
 	plus-emph-style = "#ffffff bold green"
-	right-arrow = 
+	right-arrow = ->
 	hunk-header-file-style = "purple"
 	hunk-header-style = "purple"
 	hunk-header-decoration-style = ""
