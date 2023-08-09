@@ -40,6 +40,7 @@ vim.opt.guicursor = 'n-v-sm-ve:block,i-c-ci:ver20,r-cr-o:hor20'
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = '80'
 vim.opt.scrolloff = 2
+vim.opt.scrolljump = -50
 vim.opt.spell = true
 vim.opt.spelloptions = 'camel'
 vim.opt.spellcapcheck = ''
