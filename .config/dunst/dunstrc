@@ -2,7 +2,6 @@
     monitor = 0
     follow = mouse
     width = 300
-    height = 300
     origin = top-right
     offset = 30x30
     scale = 0
