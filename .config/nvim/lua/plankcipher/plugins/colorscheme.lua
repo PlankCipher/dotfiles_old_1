@@ -51,9 +51,9 @@ hl('TelescopeSelection', {link = 'CursorLine'})
 hl('TelescopeSelectionCaret', {ctermfg = 208, ctermbg = 238, fg = '#fe8019', bg = '#444444', bold = true})
 hl('TelescopePreviewMessageFillchar', {fg = '#a89984'})
 
-hl('GitSignsAdd', {fg='#b8bb26', bg='#b8bb26'})
-hl('GitSignsChange', {fg='#8ec07c', bg='#8ec07c'})
-hl('GitSignsDelete', {fg='#fb4934', bg='#fb4934'})
+hl('GitSignsAdd', {fg = '#b8bb26', bg = 'none'})
+hl('GitSignsChange', {fg = '#83a598', bg = 'none'})
+hl('GitSignsDelete', {fg = '#fb4934', bg = 'none'})
 
 hl('DiagnosticVirtualTextError', {ctermfg = 1, fg = '#ff0000', bg = '#581818'})
 hl('DiagnosticVirtualTextHint', {ctermfg = 7, fg = '#d3d3d3', bg = '#4c4f4f'})

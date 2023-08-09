@@ -14,6 +14,7 @@ require('plankcipher.plugins.markdown_preview')
 require('plankcipher.plugins.telescope')
 require('plankcipher.plugins.visual_multi')
 require('plankcipher.plugins.comment')
+require('plankcipher.plugins.gitsigns')
 require('plankcipher.plugins.formatting.formatting')
 require('plankcipher.plugins.dashboard.dashboard')
 

@@ -23,10 +23,7 @@ return require('packer').startup({function(use)
   use('nvim-tree/nvim-web-devicons')
   use('nvim-lualine/lualine.nvim')
   use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
-  use({
-    'lewis6991/gitsigns.nvim',
-    config = function() require('gitsigns').setup() end
-  })
+  use('lewis6991/gitsigns.nvim')
 
   use('neovim/nvim-lspconfig')
   use('hrsh7th/nvim-cmp')
