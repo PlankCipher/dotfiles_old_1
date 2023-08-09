@@ -1,8 +1,4 @@
-if vim.fn.empty(vim.env.TMUX) == 1 then
-  if vim.fn.has('nvim') == 1 then
-    vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
-  end
-end
+vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
 
 vim.g.gruvbox_contrast_dark = 'hard'
 vim.api.nvim_cmd({cmd = 'colorscheme', args = {'gruvbox'}}, {})
@@ -72,7 +68,36 @@ hl('DiagnosticUnderlineHint', {sp = '#d3d3d3', underline = true})
 hl('DiagnosticUnderlineWarn', {sp = '#ffa500', underline = true})
 hl('DiagnosticUnderlineInfo', {sp = '#add8e6', underline = true})
 
-hl('LspSignatureActiveParameter', {ctermbg = 238, bg = '#444444', bold = true})
+hl('LspSignatureActiveParameter', {bg = '#444444', bold = true})
+
+hl('lualine_section_separator', {fg = '#b7ab99', bg = '#524B47'})
+hl('lualine_section_border', {fg = '#524B47', bg = '#3c3836'})
+hl('lualine_section_border_bg_none', {fg = '#524B47', bg = 'none'})
+hl('lualine_section_border_active', {fg = '#b7ab99', bg = '#3c3836'})
+hl('lualine_section_border_active_bg_none', {fg = '#b7ab99', bg = 'none'})
+hl('lualine_buffers_hidden', {fg = '#282828', bg = '#83a598'})
+hl('lualine_buffers_hidden_border', {fg = '#83a598', bg = '#3c3836'})
+hl('lualine_lsp_border', {fg = '#8ec07c', bg = '#3c3836'})
+hl('lualine_lsp_icon', {fg = '#1d2021', bg = '#8ec07c'})
+hl('lualine_lsp_clients', {fg = '#8ec07c', bg = '#524B47'})
+hl('lualine_git_border', {fg = '#f03c2e', bg = '#3c3836'})
+hl('lualine_git_icon', {fg = '#ffffff', bg = '#f03c2e'})
+hl('lualine_git_branch', {fg = '#f03c2e', bg = '#524B47'})
+hl('lualine_encoding_border', {fg = '#83a598', bg = '#3c3836'})
+hl('lualine_encoding_icon', {fg = '#1d2021', bg = '#83a598'})
+hl('lualine_encoding_type', {fg = '#83a598', bg = '#524B47'})
+hl('lualine_fileformat_border_unix', {fg = '#b8bb26', bg = '#3c3836'})
+hl('lualine_fileformat_icon_unix', {fg = '#1d2021', bg = '#b8bb26'})
+hl('lualine_fileformat_type_unix', {fg = '#b8bb26', bg = '#524B47'})
+hl('lualine_fileformat_border_non_unix', {fg = '#fb4934', bg = '#3c3836'})
+hl('lualine_fileformat_icon_non_unix', {fg = '#ffffff', bg = '#fb4934'})
+hl('lualine_fileformat_type_non_unix', {fg = '#fb4934', bg = '#524B47'})
+hl('lualine_progress_border', {fg = '#d3869b', bg = '#3c3836'})
+hl('lualine_progress_icon', {fg = '#1d2021', bg = '#d3869b'})
+hl('lualine_progress_progress', {fg = '#d3869b', bg = '#524B47'})
+hl('lualine_loc_border', {fg = '#fabd2f', bg = '#3c3836'})
+hl('lualine_loc_icon', {fg = '#1d2021', bg = '#fabd2f'})
+hl('lualine_loc_loc', {fg = '#fabd2f', bg = '#524B47'})
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
@@ -198,6 +223,6 @@ local cmp_kind_highlights = {
 }
 
 for cmp_item_kind, hl_group in pairs(cmp_kind_highlights) do
-  only_fg_hl = {fg = string.format('#%x', vim.api.nvim_get_hl(0, {name = hl_group, link = false}).fg)}
+  only_fg_hl = {fg = string.format('#%06x', vim.api.nvim_get_hl(0, {name = hl_group, link = false}).fg)}
   hl(cmp_item_kind, only_fg_hl)
 end
