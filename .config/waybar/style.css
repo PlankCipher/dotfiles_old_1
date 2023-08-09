@@ -39,6 +39,7 @@ window#waybar {
 #disk,
 #tray,
 #clock,
+#custom-pomodoro,
 #cpu,
 #memory,
 #custom-fans,
@@ -62,7 +63,8 @@ window#waybar {
 #custom-screenlock-timeout.off,
 #mpd.disconnected,
 #mpd.paused,
-#pulseaudio.muted {
+#pulseaudio.muted,
+#custom-pomodoro.paused {
   background: #777777;
 }
 
@@ -70,6 +72,7 @@ window#waybar {
   background: #689d6a;
 }
 
+#custom-pomodoro,
 #cpu,
 #memory,
 #custom-fans,
@@ -80,17 +83,36 @@ window#waybar {
   background: #458588;
 }
 
+#custom-pomodoro.done,
 #custom-battery.blink {
-  animation-name: blink;
-  animation-duration: 0.3s;
-  animation-timing-function: linear;
+  animation-name: flash;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation-timing-function: steps(10, end);
 }
 
-@keyframes blink {
-  to {
+@keyframes flash {
+  0% {
+    background-color: #458588;
+  }
+
+  60% {
+    background-color: #458588;
+  }
+
+  70% {
     background-color: #cc241d;
-    padding: 8px 30px;
+  }
+
+  80% {
+    background-color: #458588;
+  }
+
+  90% {
+    background-color: #cc241d;
+  }
+
+  100% {
+    background-color: #458588;
   }
 }

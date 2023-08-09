@@ -5,7 +5,7 @@
 
   "modules-left": ["wlr/workspaces", "custom/screenlock-timeout", "hyprland/language", "mpd", "pulseaudio", "disk", "tray"],
   "modules-center": ["clock"],
-  "modules-right": ["cpu", "memory", "custom/fans", "custom/temperature", "custom/network", "custom/net-usage", "custom/battery"],
+  "modules-right": ["custom/pomodoro", "cpu", "memory", "custom/fans", "custom/temperature", "custom/network", "custom/net-usage", "custom/battery"],
 
   "wlr/workspaces": {
     "format": "{icon}",
@@ -69,6 +69,16 @@
     "interval": 300,
     "format": " {free}",
     "tooltip": false,
+  },
+
+  "custom/pomodoro": {
+    "return-type": "json",
+    "exec": "$HOME/.scripts/pomodoro.sh",
+    "interval": 60,
+    "tooltip": false,
+    "signal": 10,
+    "on-click": "$HOME/.scripts/pomodoro.sh toggle-status",
+    "on-click-right": "$HOME/.scripts/pomodoro.sh toggle-type",
   },
 
   "cpu": {
