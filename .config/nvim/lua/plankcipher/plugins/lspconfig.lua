@@ -10,7 +10,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 
   if client.server_capabilities.documentHighlightProvider then
-    local highlight = {ctermbg = 'red', fg = '#fbf1c7', bg = '#66542a'}
+    local highlight = {fg = '#fbf1c7', bg = '#66542a'}
     vim.api.nvim_set_hl(0, 'LspReferenceRead', highlight)
     vim.api.nvim_set_hl(0, 'LspReferenceText', highlight)
     vim.api.nvim_set_hl(0, 'LspReferenceWrite', highlight)
@@ -59,6 +59,17 @@ lspconfig.eslint.setup({
   settings = {
     packageManager = 'yarn',
   }
+})
+
+lspconfig.phpactor.setup({
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+  init_options = {
+    ['language_server.diagnostic_sleep_time'] = 100,
+    ['language_server_php_cs_fixer.enabled'] = true,
+    ['language_server_php_cs_fixer.bin'] = '~/.config/composer/vendor/bin/php-cs-fixer',
+  },
 })
 
 vim.diagnostic.config({

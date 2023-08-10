@@ -8,7 +8,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias clear-history="echo ' ' > $HISTFILE && history -c"
 alias open="xdg-open"
-alias full_upgrade="sudo pacman -Syu && echo '\n\n\n' && yay -Syu --devel && echo '\n\n\n' && yarn global upgrade"
+alias full_upgrade="sudo pacman -Syu && echo '\n\n\n' && yay -Syu --devel && echo '\n\n\n' && yarn global upgrade && echo '\n\n\n' && composer global update"
 alias bat="bat -p --theme gruvbox-dark"
 alias gd="git diff --patch --stat"
 alias gdf='git status -s | sed -E "/(^\?\?)|(^M )/d" | awk "{ print \$2 }" | fzf --preview "bat -p --color always -l diff <(git diff --patch --stat {})"'

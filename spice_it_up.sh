@@ -74,6 +74,10 @@ EOF
   sudo systemctl enable docker
 
   yay -S insomnia-bin
+
+  sudo pacman -S php composer
+  yay -S phpactor
+  composer global require friendsofphp/php-cs-fixer
 }
 
 install_neovim () {
