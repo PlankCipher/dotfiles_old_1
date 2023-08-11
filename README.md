@@ -28,7 +28,7 @@
 
 ### Arch Linux
 
-On a fresh Arch install, clone this repo and run `spice_it_up.sh'.
+On a fresh Arch install, clone this repo and run `spice_it_up.sh`.
 
 > **Note**: Please read the script first.
 
