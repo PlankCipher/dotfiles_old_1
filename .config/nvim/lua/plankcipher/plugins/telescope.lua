@@ -65,14 +65,14 @@ telescope.setup({
   defaults = {
     layout_config = {
       horizontal = {
-        width = 0.9,
-        height = 0.8,
+        width = 0.95,
+        height = 0.9,
         preview_cutoff = 120,
         preview_width = 0.58,
         prompt_position = 'top',
       },
       vertical = {
-        width = 0.9,
+        width = 0.95,
       },
     },
     sorting_strategy = 'ascending',
