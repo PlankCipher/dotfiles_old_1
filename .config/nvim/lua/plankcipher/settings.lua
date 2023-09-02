@@ -37,7 +37,7 @@ vim.opt.wildignore:append('*.swp,*~,._*')
 vim.opt.wildoptions = 'pum'
 vim.opt.pumheight = 20
 vim.opt.completeopt = 'menuone,noinsert,noselect'
-vim.opt.guicursor = 'n-v-sm-ve:block,i-c-ci:ver20,r-cr-o:hor20'
+vim.opt.guicursor = ''
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = '80'
 vim.opt.scrolloff = 2
