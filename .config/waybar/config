@@ -3,11 +3,11 @@
   "spacing": 10,
   "margin": "15 15 0 15",
 
-  "modules-left": ["wlr/workspaces", "custom/screenlock-timeout", "hyprland/language", "mpd", "pulseaudio", "disk", "tray"],
+  "modules-left": ["hyprland/workspaces", "custom/screenlock-timeout", "hyprland/language", "mpd", "pulseaudio", "disk", "tray"],
   "modules-center": ["clock"],
   "modules-right": ["custom/pomodoro", "cpu", "memory", "custom/fans", "custom/temperature", "custom/network", "custom/net-usage", "custom/battery"],
 
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
       "1": "",

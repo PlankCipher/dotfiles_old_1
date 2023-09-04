@@ -298,7 +298,7 @@ install_waybar () {
 
 EOF
 
-  yay -S waybar-hyprland-git otf-font-awesome ttf-unifont noto-fonts-emoji sysstat libqalculate bc ttf-hack
+  yay -S waybar-git otf-font-awesome ttf-unifont noto-fonts-emoji sysstat libqalculate bc ttf-hack
   cp -r $SCRIPT_DIR/.config/waybar $HOME/.config/
 
   sudo pacman -S vnstat
