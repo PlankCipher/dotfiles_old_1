@@ -83,7 +83,7 @@ vim.diagnostic.config({
   },
   update_in_insert = true,
   severity_sort = true,
-  signs = false,
+  signs = true,
 })
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview

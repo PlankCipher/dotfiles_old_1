@@ -91,6 +91,11 @@ hl('GitSignsAdd', {fg = '#b8bb26', bg = 'none'})
 hl('GitSignsChange', {fg = '#83a598', bg = 'none'})
 hl('GitSignsDelete', {fg = '#fb4934', bg = 'none'})
 
+hl('DiagnosticError', {fg = '#ff0000'})
+hl('DiagnosticHint', {fg = '#d3d3d3'})
+hl('DiagnosticWarn', {fg = '#ffa500'})
+hl('DiagnosticInfo', {fg = '#add8e6'})
+
 hl('DiagnosticVirtualTextError', {fg = '#ff0000', bg = '#581818'})
 hl('DiagnosticVirtualTextHint', {fg = '#d3d3d3', bg = '#4c4f4f'})
 hl('DiagnosticVirtualTextWarn', {fg = '#ffa500', bg = '#584318'})
@@ -100,6 +105,15 @@ hl('DiagnosticUnderlineError', {sp = '#ff0000', underline = true})
 hl('DiagnosticUnderlineHint', {sp = '#d3d3d3', underline = true})
 hl('DiagnosticUnderlineWarn', {sp = '#ffa500', underline = true})
 hl('DiagnosticUnderlineInfo', {sp = '#add8e6', underline = true})
+
+hl('DiagnosticLineNrError', {fg = '#ff0000', bg = 'none'})
+hl('DiagnosticLineNrHint', {fg = '#d3d3d3', bg = 'none'})
+hl('DiagnosticLineNrWarn', {fg = '#ffa500', bg = 'none'})
+hl('DiagnosticLineNrInfo', {fg = '#add8e6', bg = 'none'})
+vim.fn.sign_define('DiagnosticSignError', {numhl = 'DiagnosticLineNrError'})
+vim.fn.sign_define('DiagnosticSignHint', {numhl = 'DiagnosticLineNrHint'})
+vim.fn.sign_define('DiagnosticSignWarn', {numhl = 'DiagnosticLineNrWarn'})
+vim.fn.sign_define('DiagnosticSignInfo', {numhl = 'DiagnosticLineNrInfo'})
 
 hl('LspSignatureActiveParameter', {bg = '#444444', bold = true})
 
