@@ -116,6 +116,8 @@ vim.fn.sign_define('DiagnosticSignWarn', {numhl = 'DiagnosticLineNrWarn'})
 vim.fn.sign_define('DiagnosticSignInfo', {numhl = 'DiagnosticLineNrInfo'})
 
 hl('LspSignatureActiveParameter', {bg = '#444444', bold = true})
+hl('LspCodeActionSign', {fg = '#fabd2f', bg = 'none'})
+vim.fn.sign_define('LspCodeAction', {text = '', texthl = 'LspCodeActionSign'})
 
 hl('lualine_section_separator', {fg = '#b7ab99', bg = '#524B47'})
 hl('lualine_section_border', {fg = '#524B47', bg = '#3c3836'})

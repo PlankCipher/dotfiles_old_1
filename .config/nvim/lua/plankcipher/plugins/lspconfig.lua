@@ -1,5 +1,27 @@
 local lspconfig = require('lspconfig')
 
+local sign_id = nil
+function code_action_listener()
+  local params = vim.lsp.util.make_range_params()
+
+  local context = { diagnostics = vim.lsp.diagnostic.get_line_diagnostics() }
+  params.context = context
+
+  vim.lsp.buf_request(0, 'textDocument/codeAction', params, function(err, result, ctx, config)
+    if sign_id then
+      vim.fn.sign_unplace('LspSigns', {buffer = vim.api.nvim_buf_get_name(0), id = sign_id})
+      sign_id = nil
+    end
+
+    if err or not result or vim.tbl_isempty(result) then
+      return
+    end
+
+    local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+    sign_id = vim.fn.sign_place(0, 'LspSigns', 'LspCodeAction', vim.api.nvim_buf_get_name(0), {lnum = row})
+  end)
+end
+
 local on_attach = function(client, bufnr)
   local bufopts = {noremap=true, silent=true, buffer=bufnr}
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -31,6 +53,21 @@ local on_attach = function(client, bufnr)
       group = 'lsp_document_highlight',
       buffer = bufnr,
       callback = vim.lsp.buf.clear_references,
+    })
+  end
+
+  if client.server_capabilities.codeActionProvider then
+    vim.api.nvim_create_augroup('lsp_code_action_sign', {
+      clear = false
+    })
+    vim.api.nvim_clear_autocmds({
+      buffer = bufnr,
+      group = 'lsp_code_action_sign',
+    })
+    vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'}, {
+      group = 'lsp_code_action_sign',
+      buffer = bufnr,
+      callback = code_action_listener,
     })
   end
 
