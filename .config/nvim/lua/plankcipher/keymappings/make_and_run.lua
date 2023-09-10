@@ -1,7 +1,7 @@
 -- Automatically open/close quickfix window
 -- based on errors output from `:make` command
 vim.api.nvim_create_autocmd('QuickFixCmdPost', {
-  pattern = '[^l]*',
+  pattern = 'make',
   nested = true,
   command = 'cwindow 20',
 })
