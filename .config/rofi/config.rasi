@@ -58,3 +58,13 @@ configuration {
 entry {
   placeholder: "";
 }
+
+inputbar {
+  children: [prompt, textbox-prompt-sep, entry, num-filtered-rows, textbox-nums-sep, num-rows, case-indicator];
+}
+
+textbox-nums-sep {
+  expand: false;
+  str: " / ";
+  text-color: @normal-foreground;
+}
