@@ -1,6 +1,5 @@
 local lspconfig = require('lspconfig')
 
-local sign_id = nil
 function code_action_listener()
   local params = vim.lsp.util.make_range_params()
 
@@ -8,17 +7,14 @@ function code_action_listener()
   params.context = context
 
   vim.lsp.buf_request(0, 'textDocument/codeAction', params, function(err, result, ctx, config)
-    if sign_id then
-      vim.fn.sign_unplace('LspSigns', {buffer = vim.api.nvim_buf_get_name(0), id = sign_id})
-      sign_id = nil
-    end
+    vim.fn.sign_unplace('LspSigns', {buffer = vim.api.nvim_buf_get_name(0)})
 
     if err or not result or vim.tbl_isempty(result) then
       return
     end
 
     local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
-    sign_id = vim.fn.sign_place(0, 'LspSigns', 'LspCodeAction', vim.api.nvim_buf_get_name(0), {lnum = row})
+    vim.fn.sign_place(0, 'LspSigns', 'LspCodeAction', vim.api.nvim_buf_get_name(0), {lnum = row})
   end)
 end
 
