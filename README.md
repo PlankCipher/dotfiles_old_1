@@ -17,7 +17,7 @@
 - WM: [`hyprland`](https://github.com/hyprwm/hyprland)
 - Screen lock: [`swaylock-effects`](https://github.com/mortie/swaylock-effects)
 - Application launcher: [`lbonn's rofi fork`](https://github.com/lbonn/rofi)
-- Terminal: [`kitty`](https://github.com/kovidgoyal/kitty)
+- Terminal: [`wezterm`](https://github.com/wez/wezterm)
 - Shell: [`zsh`](https://www.zsh.org/) with [`Oh My Zsh`](https://ohmyz.sh/)
 - Image viewer: [`imv`](https://sr.ht/~exec64/imv/)
 - Video player: [`mpv`](https://mpv.io/)

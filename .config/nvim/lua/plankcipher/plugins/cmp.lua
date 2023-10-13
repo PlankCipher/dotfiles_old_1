@@ -83,8 +83,8 @@ cmp.setup({
     end
   },
   window = {
-    completion = {border = 'rounded', col_offset = -9},
-    documentation = {border = 'rounded'},
+    completion = {border = 'none', col_offset = -8},
+    documentation = {border = {'', '', '', '', '', '', '', {' ', 'cmp_doc_border'}}},
   },
   experimental = {
     ghost_text = {hl_group = 'cmp_ghost_text'},

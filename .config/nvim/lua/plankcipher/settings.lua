@@ -36,6 +36,8 @@ vim.opt.wildignore:append('*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-
 vim.opt.wildignore:append('*.swp,*~,._*')
 vim.opt.wildoptions = 'pum'
 vim.opt.pumheight = 20
+vim.opt.pumblend = 12
+vim.opt.winblend = 12
 vim.opt.completeopt = 'menuone,noinsert,noselect'
 vim.opt.guicursor = ''
 vim.opt.termguicolors = true

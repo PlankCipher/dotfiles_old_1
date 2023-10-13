@@ -257,19 +257,24 @@ EOF
   cp -r $SCRIPT_DIR/.scripts $HOME/
 }
 
-install_kitty () {
+install_wezterm () {
   cat <<EOF
 
 ###################################################
 ###                                             ###
-###               INSTALLING KITTY              ###
+###              INSTALLING WEZTERM             ###
 ###                                             ###
 ###################################################
 
 EOF
 
-  sudo pacman -S kitty
-  cp -r $SCRIPT_DIR/.config/kitty $HOME/.config/
+  yay -S wezterm-git
+  cp -r $SCRIPT_DIR/.config/wezterm $HOME/.config/
+
+  tempfile=$(mktemp)
+  curl -o $tempfile https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo
+  tic -x -o $HOME/.terminfo $tempfile
+  rm $tempfile
 }
 
 install_rofi () {
@@ -358,7 +363,7 @@ install_kabmat
 install_ranger
 install_mpd
 install_zsh_and_ohmyzsh
-install_kitty
+install_wezterm
 install_hyprland
 install_rofi
 install_waybar

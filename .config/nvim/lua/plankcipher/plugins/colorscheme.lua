@@ -71,16 +71,17 @@ vim.api.nvim_create_autocmd('TermEnter', {
 hl('ColorColumn', {bg = '#555555'})
 hl('Todo', {fg = '#1d2021', bg = '#fe8019', bold = true})
 
-hl('Pmenu', {fg = '#ebdbb2', bg = 'None'})
+hl('Pmenu', {fg = '#ebdbb2', bg = '#4a4340'})
 hl('PmenuSel', {fg = '#282828', bg = '#b8bb26', bold = true})
-hl('NormalFloat', {fg = '#ebdbb2', bg = 'None'})
-hl('FloatBorder', {link = 'NormalFloat'})
+hl('NormalFloat', {link = 'Pmenu'})
+hl('FloatBorder', {fg = '#ebdbb2', bg = 'none'})
 
 hl('CmpItemAbbrMatch', {link = 'Special'})
 hl('CmpItemAbbrMatchFuzzy', {link = 'CmpItemAbbrMatch'})
 hl('CmpItemKind', {link = 'Keyword'})
 hl('CmpItemMenu', {link = 'CmpItemAbbrDeprecated'})
 hl('cmp_ghost_text', {fg = '#d3869b', bg = '#222222'})
+hl('cmp_doc_border', {fg = 'none', bg = 'none'})
 
 hl('TelescopeBorder', {fg = '#fe8019'})
 hl('TelescopeSelection', {link = 'CursorLine'})

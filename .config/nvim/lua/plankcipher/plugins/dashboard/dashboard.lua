@@ -46,6 +46,7 @@ function open_dashboard()
   vim.api.nvim_set_current_win(term_art_win)
   vim.api.nvim_cmd({cmd = 'te', args = {'cat', '|', '~/.config/nvim/lua/plankcipher/plugins/dashboard/this_is_fine.sh'}}, {})
   vim.api.nvim_set_option_value('buflisted', false, {buf = vim.api.nvim_win_get_buf(0)})
+  vim.api.nvim_set_option_value('winblend', 0, {scope = 'local', win = term_art_win})
   vim.api.nvim_set_current_win(initial_win)
 
   local message_vert_padding = {}
