@@ -167,6 +167,11 @@ config.keys = {
       end),
     }),
   },
+  {
+    key = 'g',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.CopyMode({ MoveBackwardZoneOfType = 'Output' }),
+  }
 }
 
 return config
