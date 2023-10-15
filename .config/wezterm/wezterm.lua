@@ -7,6 +7,7 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = 'Gruvbox Dark (Gogh)'
+
 config.colors = {
   foreground = '#f8f8f2',
   background = '#1d2021',
@@ -139,19 +140,27 @@ config.font_rules = {
 
 config.keys = {
   {
-    key = 'j',
+    key = 'k',
     mods = 'CTRL|SHIFT',
     action = wezterm.action.ActivateTabRelative(-1),
   },
   {
-    key = 'k',
+    key = 'j',
     mods = 'CTRL|SHIFT',
     action = wezterm.action.ActivateTabRelative(1),
   },
   {
     key = 'Space',
     mods = 'CTRL|SHIFT',
-    action = wezterm.action.ActivateCopyMode,
+    action = wezterm.action_callback(function(window, pane)
+      config.colors.cursor_bg = '#51a0cf'
+
+      window:set_config_overrides({
+        colors = config.colors
+      })
+
+      window:perform_action(wezterm.action.ActivateCopyMode, pane)
+    end),
   },
   {
     key = 'l',
@@ -170,8 +179,80 @@ config.keys = {
   {
     key = 'g',
     mods = 'CTRL|SHIFT',
-    action = wezterm.action.CopyMode({ MoveBackwardZoneOfType = 'Output' }),
+    action = wezterm.action_callback(function(window, pane)
+      config.colors.cursor_bg = '#51a0cf'
+
+      window:set_config_overrides({
+        colors = config.colors
+      })
+
+      window:perform_action(wezterm.action.ActivateCopyMode, pane)
+      window:perform_action(wezterm.action.CopyMode({ MoveBackwardZoneOfType = 'Output' }), pane)
+    end),
   }
+}
+
+copy_mode_key_table = wezterm.gui.default_key_tables().copy_mode
+
+table.insert(
+  copy_mode_key_table,
+  {
+    key = 'Escape',
+    mods = 'NONE',
+    action = wezterm.action.Multiple({
+      wezterm.action.ClearSelection,
+      wezterm.action.CopyMode('ClearSelectionMode')
+    }),
+  }
+)
+
+table.insert(
+  copy_mode_key_table,
+  {
+    key = 'i',
+    mods = 'NONE',
+    action = wezterm.action_callback(function(window, pane)
+      config.colors.cursor_bg = '#8ec07c'
+
+      window:set_config_overrides({
+        colors = config.colors
+      })
+
+      window:perform_action(wezterm.action.ClearSelection, pane)
+      window:perform_action(wezterm.action.CopyMode('Close'), pane)
+    end)
+  }
+)
+
+table.insert(
+  copy_mode_key_table,
+  {
+    key = 'e',
+    mods = 'CTRL',
+    action = wezterm.action.ScrollByLine(1),
+  }
+)
+
+table.insert(
+  copy_mode_key_table,
+  {
+    key = 'y',
+    mods = 'CTRL',
+    action = wezterm.action.ScrollByLine(-1),
+  }
+)
+
+table.insert(
+  copy_mode_key_table,
+  {
+    key = 'y',
+    mods = 'NONE',
+    action = wezterm.action.CopyTo('ClipboardAndPrimarySelection'),
+  }
+)
+
+config.key_tables = {
+  copy_mode = copy_mode_key_table
 }
 
 config.mouse_bindings = {
