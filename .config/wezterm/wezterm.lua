@@ -168,7 +168,10 @@ config.keys = {
     action = wezterm.action.QuickSelectArgs({
       label = 'open url',
       patterns = {
-        'https?://\\S+',
+        '\\((https?://\\S+)\\)',
+        '\\[(https?://\\S+)\\]',
+        '<(https?://\\S+)>',
+        '\\b(https?://\\S+[)/a-zA-Z0-9-]+)',
       },
       action = wezterm.action_callback(function(window, pane)
         local url = window:get_selection_text_for_pane(pane)
