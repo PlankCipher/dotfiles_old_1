@@ -232,7 +232,11 @@ table.insert(
   {
     key = 'y',
     mods = 'NONE',
-    action = wezterm.action.CopyTo('ClipboardAndPrimarySelection'),
+    action = wezterm.action.Multiple({
+      wezterm.action.CopyTo('ClipboardAndPrimarySelection'),
+      wezterm.action.ClearSelection,
+      wezterm.action.CopyMode('ClearSelectionMode')
+    }),
   }
 )
 
