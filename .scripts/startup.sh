@@ -1,16 +1,9 @@
 #!/bin/bash
 
 if ! pgrep kabmat > /dev/null; then
-  wezterm start --class 'wezterm kabmat' bash -c 'sleep 0.2 && kabmat' &
-  sleep 2
   hyprctl dispatch togglespecialworkspace
-  sleep 0.5
-  hyprctl dispatch togglespecialworkspace
-  killall kabmat
-
   hyprctl dispatch exec 'wezterm start --class "wezterm kabmat" bash -c "sleep 0.2 && kabmat"'
   sleep 2
-  hyprctl dispatch togglespecialworkspace
   hyprctl dispatch togglespecialworkspace
 fi
 
