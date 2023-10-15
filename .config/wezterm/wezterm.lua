@@ -6,6 +6,8 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+config.front_end = 'OpenGL'
+
 config.color_scheme = 'Gruvbox Dark (Gogh)'
 
 config.colors = {
@@ -152,14 +154,14 @@ config.keys = {
   {
     key = 'Space',
     mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivateCopyMode,
+  },
+  {
+    key = 'g',
+    mods = 'CTRL|SHIFT',
     action = wezterm.action_callback(function(window, pane)
-      config.colors.cursor_bg = '#51a0cf'
-
-      window:set_config_overrides({
-        colors = config.colors
-      })
-
       window:perform_action(wezterm.action.ActivateCopyMode, pane)
+      window:perform_action(wezterm.action.CopyMode({ MoveBackwardZoneOfType = 'Output' }), pane)
     end),
   },
   {
@@ -179,20 +181,6 @@ config.keys = {
       end),
     }),
   },
-  {
-    key = 'g',
-    mods = 'CTRL|SHIFT',
-    action = wezterm.action_callback(function(window, pane)
-      config.colors.cursor_bg = '#51a0cf'
-
-      window:set_config_overrides({
-        colors = config.colors
-      })
-
-      window:perform_action(wezterm.action.ActivateCopyMode, pane)
-      window:perform_action(wezterm.action.CopyMode({ MoveBackwardZoneOfType = 'Output' }), pane)
-    end),
-  }
 }
 
 copy_mode_key_table = wezterm.gui.default_key_tables().copy_mode
@@ -214,16 +202,10 @@ table.insert(
   {
     key = 'i',
     mods = 'NONE',
-    action = wezterm.action_callback(function(window, pane)
-      config.colors.cursor_bg = '#8ec07c'
-
-      window:set_config_overrides({
-        colors = config.colors
-      })
-
-      window:perform_action(wezterm.action.ClearSelection, pane)
-      window:perform_action(wezterm.action.CopyMode('Close'), pane)
-    end)
+    action = wezterm.action.Multiple({
+      wezterm.action.ClearSelection,
+      wezterm.action.CopyMode('Close')
+    }),
   }
 )
 
