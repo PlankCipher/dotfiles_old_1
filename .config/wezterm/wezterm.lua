@@ -53,9 +53,10 @@ config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
 config.show_tab_index_in_tab_bar = false
+config.tab_max_width = 30
 
 function basename(s)
-  return string.gsub(s, '(/.*)/(.*)', '%2')
+  return string.gsub(s, '/.+/(.+[^/])/?', '%1')
 end
 
 wezterm.on(
@@ -69,7 +70,9 @@ wezterm.on(
       foreground = '#ebdbb2'
     end
 
-    local title = ' ' .. basename(tab.active_pane.foreground_process_name) .. ' '
+    local proc_name = basename(tab.active_pane.foreground_process_name)
+    local cwd = basename(tab.active_pane.current_working_dir.file_path)
+    local title = ' ' .. proc_name .. '/' .. cwd .. ' '
     title = wezterm.truncate_right(title, max_width - 1)
 
     return {
