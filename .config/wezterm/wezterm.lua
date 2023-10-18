@@ -11,7 +11,7 @@ config.front_end = 'OpenGL'
 config.color_scheme = 'Gruvbox Dark (Gogh)'
 
 config.colors = {
-  foreground = '#f8f8f2',
+  foreground = '#ebdbb2',
   background = '#1d2021',
 
   cursor_bg = '#8ec07c',
