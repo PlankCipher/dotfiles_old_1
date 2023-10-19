@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sleep 3
+
 if ! pgrep kabmat > /dev/null; then
   hyprctl dispatch togglespecialworkspace
   hyprctl dispatch exec 'wezterm start --class "wezterm kabmat" bash -c "sleep 0.2 && kabmat"'
