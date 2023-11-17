@@ -141,6 +141,7 @@ telescope.setup({
     git_status = {mappings = multi_selection_i_mappings, prompt_title = '󰊢 Git Status', preview_title = '󰊢 Git File Diff Preview'},
     lsp_definitions = {mappings = multi_selection_i_mappings, prompt_title = '  LSP Definitions'},
     lsp_references = {mappings = multi_selection_i_mappings, prompt_title = '  LSP References'},
+    lsp_implementations = {mappings = multi_selection_i_mappings, prompt_title = '  LSP Implementations'},
     man_pages = {prompt_title = '  Man', preview_title = '  Man Preview'},
   },
   extensions = {
