@@ -258,6 +258,36 @@ config.mouse_bindings = {
     mods = 'NONE',
     action = wezterm.action.ScrollByLine(3),
   },
+  {
+    event = { Up = { streak = 2, button = 'Left' } },
+    mods = 'NONE',
+    action = wezterm.action.Nop,
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'ALT',
+    action = wezterm.action.Nop,
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'ALT|SHIFT',
+    action = wezterm.action.Nop,
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'NONE',
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'SHIFT',
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+  {
+    event = { Up = { streak = 3, button = 'Left' } },
+    mods = 'NONE',
+    action = wezterm.action.Nop,
+  },
 }
 
 return config
