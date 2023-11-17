@@ -26,9 +26,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
   pattern = '*',
   callback = function(event)
     if vim.api.nvim_get_option_value('ft', {buf = event.buf}) == 'help' or
-       string.sub(event.file, 1, 7) == 'term://' or
-       (event.file == '' and
-        vim.api.nvim_get_option_value('ft', {buf = event.buf}) == '') then
+      string.sub(event.file, 1, 7) == 'term://' or
+      (event.file == '' and
+      vim.api.nvim_get_option_value('ft', {buf = event.buf}) == '') then
       vim.api.nvim_cmd({cmd = 'match', args = {'none'}}, {})
     else
       for _, match in ipairs(vim.fn.getmatches()) do
@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd('WinEnter', {
   pattern = '*',
   callback = function(event)
     if event.file ~= '' or
-       vim.api.nvim_get_option_value('ft', {buf = event.buf}) ~= '' then
+      vim.api.nvim_get_option_value('ft', {buf = event.buf}) ~= '' then
       for _, match in ipairs(vim.fn.getmatches()) do
         if match.group == 'TrailingWhitespace' then
           return
