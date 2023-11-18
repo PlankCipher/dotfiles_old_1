@@ -83,11 +83,11 @@ end
 
 vim.api.nvim_create_augroup('Dashboard', {clear = false})
 
-vim.api.nvim_create_autocmd('BufNew', {
+vim.api.nvim_create_autocmd('BufAdd', {
   group = 'Dashboard',
   pattern = '*',
   callback = function(e)
-    if e.file ~= '' and dashboard_open then
+    if dashboard_open then
       vim.opt.showtabline = 2
       vim.opt.fillchars:append({eob = '~'})
       vim.opt.signcolumn = 'yes'
@@ -107,12 +107,15 @@ vim.api.nvim_create_autocmd('BufNew', {
   end
 })
 
-vim.api.nvim_create_autocmd('BufDelete', {
+vim.api.nvim_create_autocmd({ 'BufDelete', 'TermLeave' }, {
   group = 'Dashboard',
   pattern = '*',
   callback = function()
     for _, buf_handle in ipairs(vim.api.nvim_list_bufs()) do
-      if vim.fn.buflisted(buf_handle) == 1 and vim.api.nvim_buf_get_name(buf_handle) == '' and not dashboard_open then
+      if vim.fn.buflisted(buf_handle) == 1 and
+         vim.api.nvim_buf_get_name(buf_handle) == '' and
+         vim.api.nvim_get_option_value('ft', {buf = buf_handle}) == '' and
+         not dashboard_open then
         term_art_win, buf = open_dashboard()
       end
     end

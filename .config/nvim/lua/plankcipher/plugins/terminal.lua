@@ -14,9 +14,9 @@ vim.api.nvim_create_autocmd('TermOpen', {
 
 vim.api.nvim_create_autocmd('TermClose', {
   pattern = '*',
-  callback = function(args)
+  callback = function(event)
     if vim.v.event.status == 0 and vim.b.close_on_0_status then
-      vim.api.nvim_buf_delete(args.buf, {})
+      vim.api.nvim_buf_delete(event.buf, {})
       vim.api.nvim_cmd({cmd = 'match', args = {'TrailingWhitespace', [[/\s\+$/]]}}, {})
     end
   end,
